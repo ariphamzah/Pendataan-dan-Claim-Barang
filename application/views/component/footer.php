@@ -1,11 +1,3 @@
-<footer class="main-footer">
-  <div class="pull-right hidden-xs">
-    <b>Stock Op Name</b>
-  </div>
-  <strong>Copyright &copy; <?= date('Y') ?></strong>
-</footer>
-</div>
-
 <!-- jQuery 3 -->
 <script src="<?php echo base_url() ?>assets/web_admin/bower_components/jquery/dist/jquery.min.js"></script>
 <script src="<?php echo base_url() ?>assets/sweetalert/dist/sweetalert.min.js"></script>
@@ -54,6 +46,13 @@
     })
   });
 </script>
+
+<footer class="main-footer">
+  <div class="pull-right hidden-xs">
+    <b>Stock Op Name</b>
+  </div>
+  <strong>Copyright &copy; <?= date('Y') ?></strong>
+</footer>
 
 </body>
 

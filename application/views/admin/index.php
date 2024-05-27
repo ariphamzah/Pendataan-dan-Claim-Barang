@@ -355,13 +355,6 @@
       <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
-    <footer class="main-footer">
-      <div class="pull-right hidden-xs">
-        <b>Arip Hamzah</b>
-      </div>
-      <strong>Copyright &copy; <?= date('Y') ?></strong>
-    </footer>
-
 
   <!-- jQuery 3 -->
   <script src="<?php echo base_url() ?>assets/web_admin/bower_components/jquery/dist/jquery.min.js"></script>
