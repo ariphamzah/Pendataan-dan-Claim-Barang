@@ -15,6 +15,7 @@ class Admin extends CI_Controller{
       $data['stokBarangMasuk'] = $this->M_admin->sum('tb_barang_masuk','jumlah');
       $data['stokBarangKeluar'] = $this->M_admin->sum('tb_barang_keluar','jumlah');      
       $data['dataUser'] = $this->M_admin->numrows('user');
+      
       $this->load->view('admin/index',$data);
     }else {
       $this->load->view('login/login');
@@ -494,6 +495,54 @@ class Admin extends CI_Controller{
     $this->load->view('component/footer');
   }
 
+  public function tabel_claimbarang()
+  {
+    $data['list_data'] = $this->M_admin->select('tb_claim_barang');
+    $data['nav'] = 8;
+
+    // Load View
+    $this->load->view('component/header');
+    $data['main_header'] = $this->load->view('component/main_header', $data, TRUE);
+    $data['sidebar'] = $this->load->view('component/sidebar', NULL, TRUE);
+    $this->load->view('admin/tabel/tabel_claimbarang',$data);
+    $this->load->view('component/footer');
+  }
+
+  public function form_claimbarang()
+  {
+    if($this->session->userdata('role') == 0){ 
+      redirect (base_url('admin/tabel_claimbarang'));
+    }
+    $data['list_claim'] = $this->M_admin->select('tb_claim_barang');
+    $data['nav'] = 0;
+    
+    // Load View
+    $this->load->view('component/header');
+    $data['main_header'] = $this->load->view('component/main_header', $data, TRUE);
+    $data['sidebar'] = $this->load->view('component/sidebar', NULL, TRUE);
+    $this->load->view('admin/form/form_claimbarang', $data);
+    $this->load->view('component/footer');  
+  }
+
+  public function edit_claimbarang()
+  {
+    if($this->session->userdata('role') == 0){ 
+      redirect (base_url('admin/tabel_claimbarang'));
+    }
+
+    $where = array('id_claim' => $id_claim);
+    $data['list_claim'] = $this->M_admin->select('tb_claim_barang');
+    $data['masuk'] = $this->M_admin->get_data('tb_barang_masuk',$where);
+    $data['nav'] = 0;
+    
+    // Load View
+    $this->load->view('component/header');
+    $data['main_header'] = $this->load->view('component/main_header', $data, TRUE);
+    $data['sidebar'] = $this->load->view('component/sidebar', NULL, TRUE);
+    $this->load->view('admin/form/form_barangmasuk', $data);
+    $this->load->view('component/footer');  
+  }
+
   public function delete_barang($id_transaksi)
   {
     if($this->session->userdata('role') == 0){ 
@@ -861,6 +910,11 @@ class Admin extends CI_Controller{
     $this->load->view('component/footer');
   }
 
+  ####################################
+            // CLAIM BARANG
+  ####################################
+
+  
 
 }
 ?>

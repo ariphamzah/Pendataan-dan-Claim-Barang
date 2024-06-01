@@ -40,6 +40,7 @@
               <?php } ?>
 
               <a href="<?=base_url('admin/form_satuan')?>" style="margin-bottom:10px;" type="button" class="btn btn-primary" name="tambah_data"><i class="fa fa-plus-circle" aria-hidden="true"></i> Tambah Data</a>
+              <div class="table-responsive">
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
@@ -77,6 +78,7 @@
                 </tr>
                 </tfoot>
               </table>
+              </div>
             </div>
           </div>
       </div>

@@ -12,12 +12,12 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Tabel Barang Masuk
+        Tabel Claim Barang 
       </h1>
       <ol class="breadcrumb">
         <li><a href="<?=base_url('admin')?>"><i class="fa fa-dashboard"></i> Home</a></li>
         <li>Tables</li>
-        <li class="active"><a href="<?=base_url('admin/tabel_barangmasuk')?>">Tabel Barang Masuk</li>
+        <li class="active"><a href="<?=base_url('admin/tabel_barangmasuk')?>">Tabel Claim Barang</li>
       </ol>
     </section>
 
@@ -27,7 +27,7 @@
         <div class="col-xs-12">
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title"><i class="fa fa-table" aria-hidden="true"></i> Stok Barang Masuk</h3>
+              <h3 class="box-title"><i class="fa fa-table" aria-hidden="true"></i> Stok Claim Barang</h3>
             </div>
             
             <div class="box-body">
@@ -57,14 +57,17 @@
                 <thead>
                 <tr>
                   <th>No</th>
-                  <th>ID_Transaksi</th>
-                  <th>Tanggal</th>
-                  <th>Lokasi</th>
-                  <th>Merk Barang</th>
-                  <th>Kode Barang</th>
-                  <th>Nama Barang</th>
-                  <th>Satuan</th>
-                  <th>Jumlah</th>
+                  <th>id claim</th>
+                  <th>tanggal claim</th>
+                  <th>nama costumer</th>
+                  <th>mekanik</th>
+                  <th>merk mesin</th>
+                  <th>type mesin</th>
+                  <th>nomor mesin</th>
+                  <th>nama part</th>
+                  <th>penyebab kerusakan</th>
+                  <th>status</th>
+                  <th>keterangan</th>
 
                   <?php if($this->session->userdata('role') == 1){ ?>
                   <th>Update</th>
@@ -75,23 +78,26 @@
                 </thead>
                 <tbody>
                 <tr>
-                  <?php if(is_array($list_data)){ ?>
+                  <?php if(!empty($list_data)){ ?>
                   <?php $no = 1;?>
                   <?php foreach($list_data as $dd): ?>
                     <td><?=$no?></td>
-                    <td><?=$dd->id_transaksi?></td>
-                    <td><?=$dd->tanggal?></td>
-                    <td><?=$dd->lokasi?></td>
-                    <td><?=$dd->merk?></td>
-                    <td><?=$dd->kode_barang?></td>
-                    <td><?=$dd->nama_barang?></td>
-                    <td><?=$dd->nama_satuan?></td>
-                    <td><?=$dd->jumlah?></td>
+                    <td><?=$dd->id_claim?></td>
+                    <td><?=$dd->tanggal_claim?></td>
+                    <td><?=$dd->nama_costumer?></td>
+                    <td><?=$dd->mekanik?></td>
+                    <td><?=$dd->merk_mesin?></td>
+                    <td><?=$dd->type_mesin?></td>
+                    <td><?=$dd->nomor_mesin?></td>
+                    <td><?=$dd->nama_part?></td>
+                    <td><?=$dd->penyebab_kerusakan?></td>
+                    <td><?=$dd->status?></td>
+                    <td><?=$dd->keterangan?></td>
 
                     <?php if($this->session->userdata('role') == 1){ ?>
-                    <td><a type="button" class="btn btn-info"  href="<?=base_url('admin/edit_barangmasuk/'.$dd->id_transaksi)?>" name="btn_update" style="margin:auto;"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
-                    <td><a type="button" class="btn btn-danger btn-delete"  href="<?=base_url('admin/delete_barang/'.$dd->id_transaksi)?>" name="btn_delete" style="margin:auto;"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
-                    <td><a type="button" class="btn btn-success btn-barangkeluar"  href="<?=base_url('admin/barang_keluar/'.$dd->id_transaksi)?>" name="btn_barangkeluar" style="margin:auto;"><i class="fa fa-sign-out" aria-hidden="true"></i></a></td>
+                    <td><a type="button" class="btn btn-info"  href="<?=base_url('admin/edit_barangmasuk/'.$dd->id_claim)?>" name="btn_update" style="margin:auto;"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
+                    <td><a type="button" class="btn btn-danger btn-delete"  href="<?=base_url('admin/delete_barang/'.$dd->id_claim)?>" name="btn_delete" style="margin:auto;"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
+                    <td><a type="button" class="btn btn-success btn-barangkeluar"  href="<?=base_url('admin/barang_keluar/'.$dd->id_claim)?>" name="btn_barangkeluar" style="margin:auto;"><i class="fa fa-sign-out" aria-hidden="true"></i></a></td>
                     <?php } ?>
                 </tr>
               <?php $no++; ?>
@@ -103,14 +109,17 @@
                 <tfoot>
                   <tr>
                     <th>No</th>
-                    <th>ID_Transaksi</th>
-                    <th>Tanggal</th>
-                    <th>Lokasi</th>
-                    <th>Merk Barang</th>
-                    <th>Kode Barang</th>
-                    <th>Nama Barang</th>
-                    <th>Satuan</th>
-                    <th>Jumlah</th>
+                    <th>id claim</th>
+                    <th>tanggal claim</th>
+                    <th>nama costumer</th>
+                    <th>mekanik</th>
+                    <th>merk mesin</th>
+                    <th>type mesin</th>
+                    <th>nomor mesin</th>
+                    <th>nama part</th>
+                    <th>penyebab kerusakan</th>
+                    <th>status</th>
+                    <th>keterangan</th>
 
                     <?php if($this->session->userdata('role') == 1){ ?>
                     <th>Update</th>

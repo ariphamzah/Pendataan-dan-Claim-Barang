@@ -206,6 +206,7 @@
             <ul class="treeview-menu">
               <li><a href="<?php echo base_url('admin/form_barangmasuk') ?>"><i class="fa fa-circle-o"></i> Barang Masuk</a></li>
               <li><a href="<?php echo base_url('admin/form_satuan') ?>"><i class="fa fa-circle-o"></i> Satuan Barang</a></li>
+              <li><a href="<?php echo base_url('admin/form_claimbarang') ?>"><i class="fa fa-circle-o"></i> Claim Barang</a></li>
             </ul>
           </li>
           <?php } ?>
@@ -219,6 +220,7 @@
             <ul class="treeview-menu">
               <li><a href="<?= base_url('admin/tabel_barangmasuk') ?>"><i class="fa fa-circle-o"></i> Tabel Barang Masuk</a></li>
               <li><a href="<?= base_url('admin/tabel_barangkeluar') ?>"><i class="fa fa-circle-o"></i> Tabel Barang Keluar</a></li>
+              <li><a href="<?= base_url('admin/tabel_claimbarang') ?>"><i class="fa fa-circle-o"></i> Tabel Claim Barang</a></li>
               
               <?php if($this->session->userdata('role') == 1){ ?>
               <li><a href="<?= base_url('admin/tabel_satuan') ?>"><i class="fa fa-circle-o"></i> Tabel Satuan</a></li>
@@ -355,6 +357,13 @@
       <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
+
+    <footer class="main-footer">
+      <div class="pull-right hidden-xs">
+        <b>Stock Op Name</b>
+      </div>
+      <strong>Copyright &copy; <?= date('Y') ?></strong>
+    </footer>
 
   <!-- jQuery 3 -->
   <script src="<?php echo base_url() ?>assets/web_admin/bower_components/jquery/dist/jquery.min.js"></script>
