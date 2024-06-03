@@ -514,7 +514,7 @@ class Admin extends CI_Controller{
       redirect (base_url('admin/tabel_claimbarang'));
     }
     $data['list_claim'] = $this->M_admin->select('tb_claim_barang');
-    $data['nav'] = 0;
+    $data['nav'] = 9;
     
     // Load View
     $this->load->view('component/header');
