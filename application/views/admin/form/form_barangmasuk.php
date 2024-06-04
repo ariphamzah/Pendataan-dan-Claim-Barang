@@ -81,16 +81,16 @@
 
                   <div class="box-body">
                     <div class="form-group">
-                      <label for="id_transaksi" style="margin-left:220px;display:inline;">ID Transaksi</label>
-                      <input type="text" name="id_transaksi" style="margin-left:37px;width:20%;display:inline;" class="form-control" readonly="readonly" value="<?= $id_transaksi ?>">
+                      <label for="id_transaksi" style="margin-right:97px;">ID Transaksi</label>
+                      <input type="text" name="id_transaksi" style="width:60%;display:inline;" class="form-control responsive" readonly="readonly" value="<?= $id_transaksi ?>">
                     </div>
                     <div class="form-group">
-                      <label for="tanggal" style="margin-left:220px;display:inline;">Tanggal</label>
-                      <input type="date" name="tanggal" style="margin-left:66px;width:20%;display:inline;" class="form-control" autocomplete="off" value="<?= $tanggal ?>">
+                      <label for="tanggal" style="margin-right:124px;">Tanggal</label>
+                      <input type="date" name="tanggal" style="width:60%;display:inline;" class="form-control responsive" autocomplete="off" value="<?= $tanggal ?>">
                     </div>
                     <div class="form-group">
-                      <label for="nama_barang" style="margin-left:220px;display:inline;">Lokasi</label>
-                      <select class="form-control" name="lokasi" style="margin-left:75px;width:20%;display:inline;">
+                      <label for="nama_barang" style="margin-right:132px;">Lokasi</label>
+                      <select class="form-control responsive" name="lokasi" style="width:60%;display:inline;">
                         <option value="">-- Pilih --</option>
                         <option value="Aceh" <?= $lokasi=='Aceh'?'selected':''; ?>>Aceh</option>
                         <option value="Bali" <?= $lokasi=='Bali'?'selected':''; ?>>Bali</option>
@@ -123,39 +123,41 @@
                         <option value="Bangka" <?= $lokasi=='Bangka'?'selected':''; ?>>Bangka Belitung</option>
                       </select>
                     </div>
-                    <div class="form-group" style="margin-bottom:40px;">
-                      <label for="id_transaksi" style="margin-left:220px;display:inline;">Merk Barang</label>
-                      <input type="text" name="merk_barang" style="margin-left:37px;width:20%;display:inline;" class="form-control" id="merk_barang" placeholder="Merk Barang" value="<?= $merk ?>">
+                    <div class="form-group">
+                      <label for="id_transaksi" style="margin-right:94px;">Merk Barang</label>
+                      <input type="text" name="merk_barang" style="width:60%;display:inline;" class="form-control responsive" id="merk_barang" placeholder="Merk Barang" value="<?= $merk ?>">
                     </div>
-                    <div class="form-group" style="display:inline-block;">
-                      <label for="kode_barang" style="width:87%;margin-left: 12px;">Kode Barang / Barcode</label>
-                      <input type="text" name="kode_barang" style="width: 90%;margin-right: 67px;margin-left: 11px;" class="form-control" id="kode_barang" placeholder="Kode Barang" value="<?= $kode_barang ?>">
+                    <div class="form-group">
+                      <label for="kode_barang" style="margin-right:33px;">Kode Barang / Barcode</label>
+                      <input type="text" name="kode_barang" style="width:60%;display:inline;" class="form-control responsive" id="kode_barang" placeholder="Kode Barang" value="<?= $kode_barang ?>">
                     </div>
-                    <div class="form-group" style="display:inline-block;">
-                      <label for="nama_Barang" style="width:73%;">Nama Barang</label>
-                      <input type="text" name="nama_barang" style="width:90%;margin-right: 67px;" class="form-control" id="nama_Barang" placeholder="Nama Barang" value="<?= $nama_barang ?>">
+                    <div class="form-group">
+                      <label for="nama_Barang" style="margin-right:89px;">Nama Barang</label>
+                      <input type="text" name="nama_barang" style="width:60%;display:inline;" class="form-control responsive" id="nama_Barang" placeholder="Nama Barang" value="<?= $nama_barang ?>">
                     </div>
-                    <div class="form-group" style="display:inline-block;">
-                      <label for="satuan" style="width:73%;">Satuan</label>
-                      <select class="form-control" name="satuan" style="width:110%;margin-right: 18px;">
+                    <div class="form-group">
+                      <label for="satuan" style="margin-right:129px;">Satuan</label>
+                      <select class="form-control responsive" name="satuan" style="width:60%;display:inline;">
                         <option value="" selected="">-- Pilih --</option>
                         <?php foreach ($list_satuan as $s) { ?>
                           <option value="<?= $s->kode_satuan ?>" <?= $satuan==$s->kode_satuan?'selected':''; ?>><?= $s->nama_satuan ?></option>
                         <?php } ?>
                       </select>
                     </div>
-                    <div class="form-group" style="display:inline-block;">
-                      <label for="jumlah" style="width:73%;margin-left:33px;">Jumlah</label>
-                      <input type="number" name="jumlah" style="width:41%;margin-left:34px;margin-right:18px;" class="form-control" id="jumlah" value="<?= $jumlah ?>">
+                    <div class="form-group">
+                      <label for="jumlah" style="margin-right:126px;">Jumlah</label>
+                      <input type="number" name="jumlah" style="width:60%;display:inline;" class="form-control responsive" id="jumlah" value="<?= $jumlah ?>">
                     </div>
-                    <div class="form-group" style="display:inline-block;">
-                      <button type="reset" class="btn btn-basic" name="btn_reset" style="width:95px;margin-left:-70px;"><i class="fa fa-eraser" aria-hidden="true"></i> Reset</button>
+                    <center>
+                    <div class="form-group" style=" margin-top:50px; margin-bottom:50px;">
+                      <button type="reset" class="btn btn-basic" name="btn_reset" style="width:95px; margin-right:20px; responsive"><i class="fa fa-eraser" aria-hidden="true"></i> Reset</button>
+                      <button type="submit" style="width:95px; responsive" class="btn btn-success"><i class="fa fa-check" aria-hidden="true"></i> Submit</button>
                     </div>
+                    </center>
                     <!-- /.box-body -->
-                    <div class="box-footer" style="width:93%;">
-                      <a type="button" class="btn btn-default" style="width:10%;margin-right:26%" onclick="history.back(-1)" name="btn_kembali"><i class="fa fa-arrow-left" aria-hidden="true"></i> Kembali</a>
-                      <a type="button" class="btn btn-info" style="width:14%;margin-right:29%" href="<?= base_url('admin/tabel_barangmasuk') ?>" name="btn_listbarang"><i class="fa fa-table" aria-hidden="true"></i> Lihat List Barang</a>
-                      <button type="submit" style="width:20%" class="btn btn-success"><i class="fa fa-check" aria-hidden="true"></i> Submit</button>
+                    <div class="box-footer" style="width: 90%;">
+                      <a type="button" class="btn btn-default" style="margin-right:1px; responsive" onclick="history.back(-1)" name="btn_kembali"><i class="fa fa-arrow-left" aria-hidden="true"></i> Kembali</a>
+                      <a type="button" class="btn btn-info" style="margin-right:29% display:inline; responsive" href="<?= base_url('admin/tabel_claimbarang') ?>" name="btn_listbarang"><i class="fa fa-table" aria-hidden="true"></i> Lihat List Barang</a>
                     </div>
                   <!-- </div> -->
                 </form>

@@ -73,26 +73,26 @@
                 <?php } ?>
 
                 <div class="box-body">
-                  <div class="form-group" style="display:block;">
+                  <div class="form-group">
                     <input type="hidden" name="id" value="<?= $id ?>">
-                    <label for="username" style="width:87%;margin-left: 0px;">Username</label>
-                  <input type="text" name="username" style="width: 30%;margin-right: 67px;margin-left: 0px;" class="form-control" id="username" value="<?= $username ?>" <?php if($username != ''){ ?> readonly="readonly" <?php } ?> placeholder="Username">
+                    <label for="username" style="margin-right:96px;">Username</label>
+                  <input type="text" name="username" style="width:60%;display:inline;" class="form-control responsive" id="username" value="<?= $username ?>" <?php if($username != ''){ ?> readonly="readonly" <?php } ?> placeholder="Username">
                   </div>
-                  <div class="form-group" style="display:block;">
-                    <label for="email" style="width:73%;">Email</label>
-                    <input type="text" name="email" style="width:30%;margin-right: 67px;" class="form-control" id="email" value="<?= $email ?>" placeholder="Email">
+                  <div class="form-group">
+                    <label for="email" style="margin-right:124px;">Email</label>
+                    <input type="text" name="email" style="width:60%;display:inline;" class="form-control responsive" id="email" value="<?= $email ?>" placeholder="Email">
                 </div>
-                  <div class="form-group" style="display:block;">
-                    <label for="password" style="width:73%;">Password</label>
-                    <input type="password" name="password" style="width:30%;margin-right: 67px;" class="form-control" id="password" placeholder="Password">
+                  <div class="form-group">
+                    <label for="password" style="margin-right:100px;">Password</label>
+                    <input type="password" name="password" style="width:60%;display:inline;" class="form-control responsive" id="password" placeholder="Password">
                 </div>
-                  <div class="form-group" style="display:block;">
-                    <label for="confirm_password" style="width:73%;">Confirm Password</label>
-                    <input type="password" name="confirm_password" style="width:30%;margin-right: 67px;" class="form-control" id="confirm_password" placeholder="Confirm Password">
+                  <div class="form-group">
+                    <label for="confirm_password" style="margin-right:47px;">Confirm Password</label>
+                    <input type="password" name="confirm_password" style="width:60%;display:inline;" class="form-control responsive" id="confirm_password" placeholder="Confirm Password">
                 </div>
-                <div class="form-group" style="display:block;">
-                  <label for="role" style="width:73%;">Role</label>
-                  <select class="form-control" name="role" style="width:11%;margin-right: 18px;">
+                <div class="form-group">
+                  <label for="role" style="margin-right:132px;">Role</label>
+                  <select class="form-control responsive" name="role" style="width:60%;display:inline;">
                     <option>-- Pilih Role --</option>
                     <option value="0" <?= ($role == 0)?'selected':'' ?>>User Biasa</option>
                     <option value="1" <?= ($role == 1)?'selected':'' ?>>User Admin</option>
@@ -100,15 +100,20 @@
                 </div>
                 <!-- /.box-body -->
                 <?php if(isset($token_generate)){ ?>
-                  <input type="hidden" name="token"  class="form-control" value="<?= $token_generate?>">
+                  <input type="hidden" name="token"  class="form-control responsive" value="<?= $token_generate?>">
                 <?php }else {
                   redirect(base_url('admin/form_user'));
                 }?>
 
-                <div class="box-footer" style="width:93%;">
-                  <a type="button" class="btn btn-default" style="width:10%;margin-right:26%" onclick="history.back(-1)" name="btn_kembali"><i class="fa fa-arrow-left" aria-hidden="true"></i> Kembali</a>
-                  <a type="button" class="btn btn-info" style="width:13%;margin-right:29%" href="<?=base_url('admin/users')?>" name="btn_listusers"><i class="fa fa-table" aria-hidden="true"></i> Lihat Users</a>
-                  <button type="submit" style="width:20%" class="btn btn-primary"><i class="fa fa-check" aria-hidden="true"></i> Submit</button>
+                <center>
+                <div class="form-group" style=" margin-top:50px; margin-bottom:50px;">
+                  <button type="submit" style="width:95px; responsive" class="btn btn-success"><i class="fa fa-check" aria-hidden="true"></i> Submit</button>
+                </div>
+                </center>
+
+                <div class="box-footer" style="width:90%;">
+                  <a type="button" class="btn btn-default" style="margin-right:5px; responsive" onclick="history.back(-1)" name="btn_kembali"><i class="fa fa-arrow-left" aria-hidden="true"></i> Kembali</a>
+                  <a type="button" class="btn btn-info" style="margin-right:29% display:inline; responsive" href="<?=base_url('admin/users')?>" name="btn_listusers"><i class="fa fa-table" aria-hidden="true"></i> Lihat Users</a>
                 </div>
               </form>
             </div>

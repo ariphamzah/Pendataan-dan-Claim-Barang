@@ -66,23 +66,25 @@
                   <?php } ?>
 
                   <div class="box-body">
-                    <div class="form-group" style="display:inline-block;">
+                    <div class="form-group">
                       <input type="hidden" name="id_satuan" value="<?= $id_satuan ?>">
-                      <label for="kode_satuan" style="width:87%;margin-left: 12px;">Kode Satuan</label>
-                      <input type="text" name="kode_satuan" style="width: 90%;margin-right: 67px;margin-left: 11px;" class="form-control" id="kode_satuan" value="<?= $kode_satuan ?>" placeholder="Kode Satuan">
+                      <label for="kode_satuan" style="margin-right:124px;">Kode Satuan</label>
+                      <input type="text" name="kode_satuan" style="width:60%;display:inline;" class="form-control responsive" id="kode_satuan" value="<?= $kode_satuan ?>" placeholder="Kode Satuan">
                     </div>
-                    <div class="form-group" style="display:inline-block;">
-                      <label for="nama_satuan" style="width:73%;">Nama Satuan</label>
-                      <input type="text" name="nama_satuan" style="width:90%;margin-right: 67px;" class="form-control" id="nama_satuan" value="<?= $nama_satuan ?>" placeholder="Nama Satuan">
+                    <div class="form-group">
+                      <label for="nama_satuan" style="margin-right:120px;">Nama Satuan</label>
+                      <input type="text" name="nama_satuan" style="width:60%;display:inline;" class="form-control responsive" id="nama_satuan" value="<?= $nama_satuan ?>" placeholder="Nama Satuan">
                     </div>
-                    <div class="form-group" style="display:inline-block;">
-                      <button type="reset" class="btn btn-basic" name="btn_reset" style="width:95px;margin-left:20px;"><i class="fa fa-eraser" aria-hidden="true"></i> Reset</button>
+                    <center>
+                    <div class="form-group" style=" margin-top:50px; margin-bottom:50px;">
+                      <button type="reset" class="btn btn-basic" name="btn_reset" style="width:95px; margin-right:20px; responsive"><i class="fa fa-eraser" aria-hidden="true"></i> Reset</button>
+                      <button type="submit" style="width:95px; responsive" class="btn btn-success"><i class="fa fa-check" aria-hidden="true"></i> Submit</button>
                     </div>
+                    </center>
                     <!-- /.box-body -->
-                    <div class="box-footer" style="width:93%;">
-                      <a type="button" class="btn btn-default" style="width:10%;margin-right:26%" onclick="history.back(-1)" name="btn_kembali"><i class="fa fa-arrow-left" aria-hidden="true"></i> Kembali</a>
-                      <a type="button" class="btn btn-info" style="width:13%;margin-right:29%" href="<?=base_url('admin/tabel_satuan')?>" name="btn_listsatuan"><i class="fa fa-table" aria-hidden="true"></i> Lihat Satuan</a>
-                      <button type="submit" style="width:20%" class="btn btn-primary"><i class="fa fa-check" aria-hidden="true"></i> Submit</button>
+                    <div class="box-footer" style="width:90%;">
+                      <a type="button" class="btn btn-default" style="margin-right:5px; responsive" onclick="history.back(-1)" name="btn_kembali"><i class="fa fa-arrow-left" aria-hidden="true"></i> Kembali</a>
+                      <a type="button" class="btn btn-info" style="margin-right:29% display:inline; responsive" href="<?=base_url('admin/tabel_satuan')?>" name="btn_listsatuan"><i class="fa fa-table" aria-hidden="true"></i> Lihat Satuan</a>
                     </div>
                   </div>
                 </form>
