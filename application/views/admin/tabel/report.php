@@ -72,7 +72,7 @@
                       </div>
                     <?php } ?>
                     
-                    <div class="col-sm-2">
+                    <div class="col-sm-2" style=" position: relative ;min-height: 1px;padding-right: 15px;padding-left: 15px;margin-bottom: 20px;">
                       <select class="form-control" name="month" id="month" required>
                         <option value="">Month</option>
                         <?php for($m=0;$m<12;$m++){ ?>
@@ -80,7 +80,7 @@
                         <?php } ?>
                       </select>
                     </div>
-                    <div class="col-sm-2">
+                    <div class="col-sm-2" style=" position: relative ;min-height: 1px;padding-right: 15px;padding-left: 15px;margin-bottom: 20px;">
                       <select class="form-control" name="year" id="year" required>
                         <option value="">Year</option>
                         <?php for($y=0;$y<3;$y++){ ?>
@@ -90,12 +90,13 @@
 
                     </div>
 
-                    <div class="col-sm-2">
+                    <div class="col-sm-2" style=" position: relative ;min-height: 1px;padding-right: 15px;padding-left: 15px;margin-bottom: 20px;">
                       <input type="submit" value="Submit" class="btn btn-success" name="submit">
                     </div>
 
-                    <h3>Report Periode, <?= ($flag == 2)?$months[$month - 1]:'' ?> - <?= ($flag == 2)?$year:'' ?></h3>
+                    <h3 style="margin-bottom:28px">Report Periode, <?= ($flag == 2)?$months[$month - 1]:'' ?> - <?= ($flag == 2)?$year:'' ?></h3>
 
+                    <div class="table-responsive">
                     <table id="example1" class="table table-bordered table-striped">
                       <thead>
                       <tr>
@@ -153,6 +154,7 @@
                         </tr>
                       </tfoot>
                     </table>
+                    </div> 
 
                   </form>
                 </div>
@@ -174,7 +176,7 @@
                       </div>
                     <?php } ?>
                     
-                    <div class="col-sm-2">
+                    <div class="col-sm-2" style=" position: relative ;min-height: 1px;padding-right: 15px;padding-left: 15px;margin-bottom: 20px;">
                       <select class="form-control" name="month" id="month" required>
                         <option value="">Month</option>
                         <?php for($m=0;$m<12;$m++){ ?>
@@ -182,7 +184,7 @@
                         <?php } ?>
                       </select>
                     </div>
-                    <div class="col-sm-2">
+                    <div class="col-sm-2" style=" position: relative ;min-height: 1px;padding-right: 15px;padding-left: 15px;margin-bottom: 20px;">
                       <select class="form-control" name="year" id="year" required>
                         <option value="">Year</option>
                         <?php for($y=0;$y<3;$y++){ ?>
@@ -192,12 +194,13 @@
 
                     </div>
 
-                    <div class="col-sm-2">
+                    <div class="col-sm-2" style=" position: relative ;min-height: 1px;padding-right: 15px;padding-left: 15px;margin-bottom: 20px;">
                       <input type="submit" value="Submit" class="btn btn-success" name="submit-masuk">
                     </div>
 
-                    <h3>Report Periode, <?= ($flag == 1)?$months[$month - 1]:'' ?> - <?= ($flag == 1)?$year:'' ?></h3>
+                    <h3 style="margin-bottom:28px">Report Periode, <?= ($flag == 1)?$months[$month - 1]:'' ?> - <?= ($flag == 1)?$year:'' ?></h3>
 
+                    <div class="table-responsive">
                     <table id="example1" class="table table-bordered table-striped">
                       <thead>
                       <tr>
@@ -249,6 +252,7 @@
                         </tr>
                       </tfoot>
                     </table>
+                    </div>
 
                   </form>
                 </div>
