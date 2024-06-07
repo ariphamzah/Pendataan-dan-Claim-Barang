@@ -93,7 +93,12 @@ class Admin extends CI_Controller{
         redirect(base_url('admin/profile'));
       }
     }else {
-      $this->load->view('admin/profile');
+      // Load View
+      $this->load->view('component/header');
+      $data['main_header'] = $this->load->view('component/main_header', $data, TRUE);
+      $data['sidebar'] = $this->load->view('component/sidebar', NULL, TRUE);
+      $this->load->view('admin/profile',$data);
+      $this->load->view('component/footer');
     }
   }
 
@@ -344,7 +349,12 @@ class Admin extends CI_Controller{
           redirect(base_url('admin/users'));
         }}
       }else {
+        // Load View
+        $this->load->view('component/header');
+        $data['main_header'] = $this->load->view('component/main_header', $data, TRUE);
+        $data['sidebar'] = $this->load->view('component/sidebar', NULL, TRUE);
         $this->load->view('admin/form/form_users',$data);
+        $this->load->view('component/footer');    
     }
   }
 
@@ -388,7 +398,12 @@ class Admin extends CI_Controller{
         redirect(base_url('admin/users'));
        }
     }else{
-        $this->load->view('admin/form/form_users');
+        // Load View
+        $this->load->view('component/header');
+        $data['main_header'] = $this->load->view('component/main_header', $data, TRUE);
+        $data['sidebar'] = $this->load->view('component/sidebar', NULL, TRUE);
+        $this->load->view('admin/form/form_users',$data);
+        $this->load->view('component/footer');
     }
   }
 
@@ -566,7 +581,14 @@ class Admin extends CI_Controller{
       redirect(base_url('admin/tabel_barangmasuk'));
     }else {
       $data['list_satuan'] = $this->M_admin->select('tb_satuan');
-      $this->load->view('admin/form/form_barangmasuk',$data);
+      $data['nav'] = 0;
+
+      // Load View
+      $this->load->view('component/header');
+      $data['main_header'] = $this->load->view('component/main_header', $data, TRUE);
+      $data['sidebar'] = $this->load->view('component/sidebar', NULL, TRUE);
+      $this->load->view('admin/form/form_barangmasuk', $data);
+      $this->load->view('component/footer'); 
     }
   }
 
@@ -613,7 +635,14 @@ class Admin extends CI_Controller{
       $this->session->set_flashdata('msg_berhasil','Data Barang Berhasil Diupdate');
       redirect(base_url('admin/tabel_barangmasuk'));
     }else{
-      $this->load->view('admin/form/form_barangmasuk');
+      $data['nav'] = 0;
+
+      // Load View
+      $this->load->view('component/header');
+      $data['main_header'] = $this->load->view('component/main_header', $data, TRUE);
+      $data['sidebar'] = $this->load->view('component/sidebar', NULL, TRUE);
+      $this->load->view('admin/form/form_barangmasuk', $data);
+      $this->load->view('component/footer'); 
     }
   }
   ####################################
@@ -725,7 +754,14 @@ class Admin extends CI_Controller{
       $this->session->set_flashdata('msg_berhasil','Data Claim Berhasil Ditambahkan');
       redirect(base_url('admin/tabel_claimbarang'));
     }else{
-      redirect(base_url('admin/form_claimbarang'));
+      $data['nav'] = 9;
+    
+      // Load View
+      $this->load->view('component/header');
+      $data['main_header'] = $this->load->view('component/main_header', $data, TRUE);
+      $data['sidebar'] = $this->load->view('component/sidebar', NULL, TRUE);
+      $this->load->view('admin/form/form_claimbarang', $data);
+      $this->load->view('component/footer');  
     }
   }
 
@@ -781,7 +817,14 @@ class Admin extends CI_Controller{
       $this->session->set_flashdata('msg_berhasil','Data Claim Berhasil Diupdate');
       redirect(base_url('admin/tabel_claimbarang'));
     }else{
-      redirect(base_url('admin/form_claimbarang'));
+      $data['nav'] = 9;
+    
+      // Load View
+      $this->load->view('component/header');
+      $data['main_header'] = $this->load->view('component/main_header', $data, TRUE);
+      $data['sidebar'] = $this->load->view('component/sidebar', NULL, TRUE);
+      $this->load->view('admin/form/form_claimbarang', $data);
+      $this->load->view('component/footer');  
     }
   }
 
@@ -943,7 +986,14 @@ class Admin extends CI_Controller{
       $this->session->set_flashdata('msg_berhasil','Data satuan Berhasil Di Update');
       redirect(base_url('admin/tabel_satuan'));
     }else {
-      $this->load->view('admin/form/form_satuan');
+       $data['nav'] = 4;
+
+       // Load View
+       $this->load->view('component/header');
+       $data['main_header'] = $this->load->view('component/main_header', $data, TRUE);
+       $data['sidebar'] = $this->load->view('component/sidebar', NULL, TRUE);
+       $this->load->view('admin/form/form_satuan',$data);
+       $this->load->view('component/footer');
     }
   }
 
@@ -1015,7 +1065,14 @@ class Admin extends CI_Controller{
         $this->session->set_flashdata('msg_berhasil_keluar','Data Berhasil Keluar');
         redirect(base_url('admin/tabel_barangmasuk'));
     }else {
+      $data['nav'] = 2;
+
+      // Load View
+      $this->load->view('component/header');
+      $data['main_header'] = $this->load->view('component/main_header', $data, TRUE);
+      $data['sidebar'] = $this->load->view('component/sidebar', NULL, TRUE);
       $this->load->view('form/form_pindahbarang/'.$id_transaksi);
+      $this->load->view('component/footer');
     }
 
   }

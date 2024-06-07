@@ -95,8 +95,8 @@
                       <input type="date" name="tanggal" style="width:60%;display:inline;" class="form-control responsive" autocomplete="off" value="<?= $tanggal ?>">
                     </div>
                     <div class="form-group">
-                      <label for="nama_customer" style="margin-right:74px;">Nama Costumer</label>
-                      <input type="text" name="nama_customer" style="width:60%; display:inline;" class="form-control responsive" id="nama_customer" placeholder="Nama Costumer" value="<?= $nama_customer ?>">
+                      <label for="nama_customer" style="margin-right:74px;">Nama Customer</label>
+                      <input type="text" name="nama_customer" style="width:60%; display:inline;" class="form-control responsive" id="nama_customer" placeholder="Nama Customer" value="<?= $nama_customer ?>">
                     </div>
                     <div class="form-group">
                       <label for="mekanik" style="margin-right:120px;">Mekanik</label>
