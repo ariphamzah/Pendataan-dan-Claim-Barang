@@ -47,7 +47,7 @@
               <?php } ?>
 
               <?php if($this->session->userdata('role') == 1){ ?>
-              <a href="<?=base_url('admin/form_barangmasuk')?>" style="margin-bottom:10px;" type="button" class="btn btn-primary" name="tambah_data"><i class="fa fa-plus-circle" aria-hidden="true"></i> Tambah Data Masuk</a>
+              <a href="<?=base_url('admin/form_claimbarang')?>" style="margin-bottom:10px;" type="button" class="btn btn-primary" name="tambah_data"><i class="fa fa-plus-circle" aria-hidden="true"></i> Tambah Data Claim</a>
               <?php } else { ?>
                 <a href=""></a>
               <?php } ?>
@@ -58,7 +58,7 @@
                 <tr>
                   <th>No</th>
                   <th>id claim</th>
-                  <th>tanggal claim</th>
+                  <th>tanggal</th>
                   <th>nama costumer</th>
                   <th>mekanik</th>
                   <th>merk mesin</th>
@@ -71,8 +71,6 @@
 
                   <?php if($this->session->userdata('role') == 1){ ?>
                   <th>Update</th>
-                  <th>Delete</th>
-                  <th>Keluarkan</th>
                   <?php } ?>
                 </tr>
                 </thead>
@@ -83,8 +81,8 @@
                   <?php foreach($list_data as $dd): ?>
                     <td><?=$no?></td>
                     <td><?=$dd->id_claim?></td>
-                    <td><?=$dd->tanggal_claim?></td>
-                    <td><?=$dd->nama_costumer?></td>
+                    <td><?=$dd->tanggal?></td>
+                    <td><?=$dd->nama_customer?></td>
                     <td><?=$dd->mekanik?></td>
                     <td><?=$dd->merk_mesin?></td>
                     <td><?=$dd->type_mesin?></td>
@@ -95,9 +93,7 @@
                     <td><?=$dd->keterangan?></td>
 
                     <?php if($this->session->userdata('role') == 1){ ?>
-                    <td><a type="button" class="btn btn-info"  href="<?=base_url('admin/edit_barangmasuk/'.$dd->id_claim)?>" name="btn_update" style="margin:auto;"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
-                    <td><a type="button" class="btn btn-danger btn-delete"  href="<?=base_url('admin/delete_barang/'.$dd->id_claim)?>" name="btn_delete" style="margin:auto;"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
-                    <td><a type="button" class="btn btn-success btn-barangkeluar"  href="<?=base_url('admin/barang_keluar/'.$dd->id_claim)?>" name="btn_barangkeluar" style="margin:auto;"><i class="fa fa-sign-out" aria-hidden="true"></i></a></td>
+                    <td><a type="button" class="btn btn-info"  href="<?=base_url('admin/edit_claimbarang/'.$dd->id_claim)?>" name="btn_update" style="margin:auto;"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
                     <?php } ?>
                 </tr>
               <?php $no++; ?>
@@ -110,7 +106,7 @@
                   <tr>
                     <th>No</th>
                     <th>id claim</th>
-                    <th>tanggal claim</th>
+                    <th>tanggal</th>
                     <th>nama costumer</th>
                     <th>mekanik</th>
                     <th>merk mesin</th>
@@ -123,8 +119,6 @@
 
                     <?php if($this->session->userdata('role') == 1){ ?>
                     <th>Update</th>
-                    <th>Delete</th>
-                    <th>Keluarkan</th>
                     <?php } ?>
                   </tr>
                 </tfoot>

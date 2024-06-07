@@ -1,7 +1,7 @@
 <?php
 	$id_claim = 'CLM-'.date("Y").random_string('numeric', 8);
 	$tanggal = '';
-	$nama_costumer = '';
+	$nama_customer = '';
 	$mekanik = '';
 	$merk_mesin = '';
 	$type_mesin = '';
@@ -11,13 +11,13 @@
   $status = '';
   $keterangan = '';
 	$flag = 0;
-  $link = base_url('admin/proses_databarang_masuk_insert');
+  $link = base_url('admin/proses_databarang_claim_insert');
 
 	if(isset($masuk)){
 		foreach($masuk as $d){
       $id_claim=$d->id_claim;
       $tanggal=$d->tanggal;
-      $nama_costumer=$d->nama_costumer;
+      $nama_customer=$d->nama_customer;
       $mekanik=$d->mekanik;
       $merk_mesin=$d->merk_mesin;
       $type_mesin=$d->type_mesin;
@@ -27,7 +27,7 @@
       $status=$d->status;
       $keterangan=$d->keterangan;
       $flag=0;
-      $link=base_url('admin/proses_databarang_masuk_update');
+      $link=base_url('admin/proses_databarang_claim_update');
     }
 	}
 ?>
@@ -87,16 +87,16 @@
 
                   <div class="box-body">
                     <div class="form-group">
-                      <label for="id_transaksi" style="margin-right:121px;">ID Claim</label>
-                      <input type="text" name="id_transaksi" style="width:60%;display:inline;" class="form-control responsive" readonly="readonly" value="<?= $id_claim ?>">
+                      <label for="id_claim" style="margin-right:121px;">ID Claim</label>
+                      <input type="text" name="id_claim" style="width:60%;display:inline;" class="form-control responsive" readonly="readonly" value="<?= $id_claim ?>">
                     </div>
                     <div class="form-group">
                       <label for="tanggal" style="margin-right:124px;">Tanggal</label>
                       <input type="date" name="tanggal" style="width:60%;display:inline;" class="form-control responsive" autocomplete="off" value="<?= $tanggal ?>">
                     </div>
                     <div class="form-group">
-                      <label for="nama_costumer" style="margin-right:74px;">Nama Costumer</label>
-                      <input type="text" name="nama_costumer" style="width:60%; display:inline;" class="form-control responsive" id="nama_costumer" placeholder="Nama Costumer" value="<?= $nama_costumer ?>">
+                      <label for="nama_customer" style="margin-right:74px;">Nama Costumer</label>
+                      <input type="text" name="nama_customer" style="width:60%; display:inline;" class="form-control responsive" id="nama_customer" placeholder="Nama Costumer" value="<?= $nama_customer ?>">
                     </div>
                     <div class="form-group">
                       <label for="mekanik" style="margin-right:120px;">Mekanik</label>

@@ -425,6 +425,12 @@ class Admin extends CI_Controller{
 
       $data['flag'] = 1;
 
+    }else if($id == 3){
+
+        $data['clabar'] = $this->M_admin->get_data_report('tb_claim_barang',$month,$year,'tanggal');
+  
+        $data['flag'] = 3;
+
     }else{
       $data['flag'] = 0;
     }
@@ -493,54 +499,6 @@ class Admin extends CI_Controller{
     $data['sidebar'] = $this->load->view('component/sidebar', NULL, TRUE);
     $this->load->view('admin/tabel/tabel_barangmasuk',$data);
     $this->load->view('component/footer');
-  }
-
-  public function tabel_claimbarang()
-  {
-    $data['list_data'] = $this->M_admin->select('tb_claim_barang');
-    $data['nav'] = 8;
-
-    // Load View
-    $this->load->view('component/header');
-    $data['main_header'] = $this->load->view('component/main_header', $data, TRUE);
-    $data['sidebar'] = $this->load->view('component/sidebar', NULL, TRUE);
-    $this->load->view('admin/tabel/tabel_claimbarang',$data);
-    $this->load->view('component/footer');
-  }
-
-  public function form_claimbarang()
-  {
-    if($this->session->userdata('role') == 0){ 
-      redirect (base_url('admin/tabel_claimbarang'));
-    }
-    $data['list_claim'] = $this->M_admin->select('tb_claim_barang');
-    $data['nav'] = 9;
-    
-    // Load View
-    $this->load->view('component/header');
-    $data['main_header'] = $this->load->view('component/main_header', $data, TRUE);
-    $data['sidebar'] = $this->load->view('component/sidebar', NULL, TRUE);
-    $this->load->view('admin/form/form_claimbarang', $data);
-    $this->load->view('component/footer');  
-  }
-
-  public function edit_claimbarang()
-  {
-    if($this->session->userdata('role') == 0){ 
-      redirect (base_url('admin/tabel_claimbarang'));
-    }
-
-    $where = array('id_claim' => $id_claim);
-    $data['list_claim'] = $this->M_admin->select('tb_claim_barang');
-    $data['masuk'] = $this->M_admin->get_data('tb_barang_masuk',$where);
-    $data['nav'] = 0;
-    
-    // Load View
-    $this->load->view('component/header');
-    $data['main_header'] = $this->load->view('component/main_header', $data, TRUE);
-    $data['sidebar'] = $this->load->view('component/sidebar', NULL, TRUE);
-    $this->load->view('admin/form/form_barangmasuk', $data);
-    $this->load->view('component/footer');  
   }
 
   public function delete_barang($id_transaksi)
@@ -914,7 +872,151 @@ class Admin extends CI_Controller{
             // CLAIM BARANG
   ####################################
 
-  
+  public function tabel_claimbarang()
+  {
+    $data['list_data'] = $this->M_admin->select('tb_claim_barang');
+    $data['nav'] = 8;
+
+    // Load View
+    $this->load->view('component/header');
+    $data['main_header'] = $this->load->view('component/main_header', $data, TRUE);
+    $data['sidebar'] = $this->load->view('component/sidebar', NULL, TRUE);
+    $this->load->view('admin/tabel/tabel_claimbarang',$data);
+    $this->load->view('component/footer');
+  }
+
+  public function form_claimbarang()
+  {
+    if($this->session->userdata('role') == 0){ 
+      redirect (base_url('admin/tabel_claimbarang'));
+    }
+    $data['list_data'] = $this->M_admin->select('tb_claim_barang');
+    $data['nav'] = 9;
+    
+    // Load View
+    $this->load->view('component/header');
+    $data['main_header'] = $this->load->view('component/main_header', $data, TRUE);
+    $data['sidebar'] = $this->load->view('component/sidebar', NULL, TRUE);
+    $this->load->view('admin/form/form_claimbarang', $data);
+    $this->load->view('component/footer');  
+  }
+
+  public function edit_claimbarang($id_claim)
+  {
+    if($this->session->userdata('role') == 0){ 
+      redirect (base_url('admin/tabel_claimbarang'));
+    }
+
+    $where = array('id_claim' => $id_claim);
+    $data['list_data'] = $this->M_admin->select('tb_claim_barang');
+    $data['masuk'] = $this->M_admin->get_data('tb_claim_barang',$where);
+    $data['nav'] = 9;
+    
+    // Load View
+    $this->load->view('component/header');
+    $data['main_header'] = $this->load->view('component/main_header', $data, TRUE);
+    $data['sidebar'] = $this->load->view('component/sidebar', NULL, TRUE);
+    $this->load->view('admin/form/form_claimbarang', $data);
+    $this->load->view('component/footer');  
+  }
+
+  public function proses_databarang_claim_insert()
+  {
+
+    if($this->form_validation->run() == TRUE)
+    {
+      $id_claim                 = $this->input->post('id_claim',TRUE);
+      $tanggal                  = $this->input->post('tanggal',TRUE);
+      $nama_customer            = $this->input->post('nama_customer',TRUE);
+      $mekanik                  = $this->input->post('mekanik',TRUE);
+      $merk_mesin               = $this->input->post('merk_mesin',TRUE);
+      $type_mesin               = $this->input->post('type_mesin',TRUE);
+      $nomor_mesin              = $this->input->post('nomor_mesin',TRUE);
+      $nama_part                = $this->input->post('nama_part',TRUE);
+      $penyebab_kerusakan       = $this->input->post('penyebab_kerusakan',TRUE);
+      $status                   = $this->input->post('status',TRUE);
+      $keterangan               = $this->input->post('keterangan',TRUE);
+
+      $data = array(
+            'id_claim'              => $id_claim,
+            'tanggal'               => $tanggal,
+            'nama_customer'         => $nama_customer,
+            'mekanik'               => $mekanik,
+            'merk_mesin'            => $merk_mesin,
+            'type_mesin'            => $type_mesin,
+            'nomor_mesin'           => $nomor_mesin,
+            'nama_part'             => $nama_part,
+            'penyebab_kerusakan'    => $penyebab_kerusakan,
+            'status'                => $status,
+            'keterangan'            => $keterangan
+
+      );
+
+      $data_report = array(
+        'id_report'        => 'RP-'.date("Y").random_string('numeric', 8),
+        'user_report'      => $this->session->userdata('name'),
+        'jenis_report'     => 'report_claim',
+        'note'             => 'Add Claim '.$id_claim. ' (' .$nama_customer. ')' 
+      );
+
+      $this->M_admin->insert('tb_claim_barang',$data);
+      $this->M_admin->insert('tb_report',$data_report);
+
+      $this->session->set_flashdata('msg_berhasil','Data Claim Berhasil Ditambahkan');
+      redirect(base_url('admin/tabel_claimbarang'));
+    }else{
+      redirect(base_url('admin/form_claimbarang'));
+    }
+  }
+
+  public function proses_databarang_claim_update()
+  {
+
+    if($this->form_validation->run() == TRUE)
+    {
+      $id_claim                 = $this->input->post('id_claim',TRUE);
+      $tanggal                  = $this->input->post('tanggal',TRUE);
+      $nama_customer            = $this->input->post('nama_customer',TRUE);
+      $mekanik                  = $this->input->post('mekanik',TRUE);
+      $merk_mesin               = $this->input->post('merk_mesin',TRUE);
+      $type_mesin               = $this->input->post('type_mesin',TRUE);
+      $nomor_mesin              = $this->input->post('nomor_mesin',TRUE);
+      $nama_part                = $this->input->post('nama_part',TRUE);
+      $penyebab_kerusakan       = $this->input->post('penyebab_kerusakan',TRUE);
+      $status                   = $this->input->post('status',TRUE);
+      $keterangan               = $this->input->post('keterangan',TRUE);
+
+      $where = array('id_claim' => $id_claim);
+      $data = array(
+            'id_claim'              => $id_claim,
+            'tanggal'               => $tanggal,
+            'nama_customer'         => $nama_customer,
+            'mekanik'               => $mekanik,
+            'merk_mesin'            => $merk_mesin,
+            'type_mesin'            => $type_mesin,
+            'nomor_mesin'           => $nomor_mesin,
+            'nama_part'             => $nama_part,
+            'penyebab_kerusakan'    => $penyebab_kerusakan,
+            'status'                => $status,
+            'keterangan'            => $keterangan
+      );
+
+      $data_report = array(
+        'id_report'        => 'RP-'.date("Y").random_string('numeric', 8),
+        'user_report'      => $this->session->userdata('name'),
+        'jenis_report'     => 'report_claim',
+        'note'             => 'Update Claim '.$id_claim. ' (' .$nama_customer. ')'
+      );
+      
+      $this->M_admin->update('tb_claim_barang',$data,$where);
+      $this->M_admin->insert('tb_report',$data_report);
+
+      $this->session->set_flashdata('msg_berhasil','Data Claim Berhasil Diupdate');
+      redirect(base_url('admin/tabel_claimbarang'));
+    }else{
+      redirect(base_url('admin/form_claimbarang'));
+    }
+  }
 
 }
 ?>

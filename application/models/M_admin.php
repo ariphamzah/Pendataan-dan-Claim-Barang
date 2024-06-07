@@ -14,19 +14,19 @@ class M_admin extends CI_Model
     return $query->result();
   }
 
-  public function cek_jumlah($tabel,$id_transaksi)
+  public function cek_jumlah($tabel,$id_transaksi,$id_claim)
   {
     return  $this->db->select('*')
                ->from($tabel)
-               ->where('id_transaksi',$id_transaksi)
+               ->where('id_transaksi',$id_transaksi,'id_claim',$id_claim)
                ->get();
   }
 
-  public function get_data_array($tabel,$id_transaksi)
+  public function get_data_array($tabel,$id_transaksi,$id_claim)
   {
     $query = $this->db->select()
                       ->from($tabel)
-                      ->where($id_transaksi)
+                      ->where($id_transaksi,$id_claim)
                       ->get();
     return $query->result_array();
   }
