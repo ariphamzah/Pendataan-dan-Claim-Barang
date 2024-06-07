@@ -81,7 +81,7 @@
                   <?php foreach($list_data as $dd): ?>
                     <td><?=$no?></td>
                     <td><?=$dd->id_claim?></td>
-                    <td><?=$dd->tanggal?></td>
+                    <td><?=$dd->tanggal_claim?></td>
                     <td><?=$dd->nama_customer?></td>
                     <td><?=$dd->mekanik?></td>
                     <td><?=$dd->merk_mesin?></td>

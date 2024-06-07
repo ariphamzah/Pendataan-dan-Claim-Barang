@@ -16,7 +16,7 @@
 	if(isset($masuk)){
 		foreach($masuk as $d){
       $id_claim=$d->id_claim;
-      $tanggal=$d->tanggal;
+      $tanggal=$d->tanggal_claim;
       $nama_customer=$d->nama_customer;
       $mekanik=$d->mekanik;
       $merk_mesin=$d->merk_mesin;
@@ -26,7 +26,7 @@
       $penyebab_kerusakan=$d->penyebab_kerusakan;
       $status=$d->status;
       $keterangan=$d->keterangan;
-      $flag=0;
+      $flag=1;
       $link=base_url('admin/proses_databarang_claim_update');
     }
 	}
