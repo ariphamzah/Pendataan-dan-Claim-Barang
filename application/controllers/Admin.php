@@ -436,7 +436,7 @@ class Admin extends CI_Controller{
 
 		}else if($id == 2){
 
-      $data['barmas'] = $this->M_admin->get_data_report('tb_barang_masuk',$month,$year,'tanggal');
+      $data['barmas'] = $this->M_admin->get_data_report_masuk('tb_barang_masuk',$month,$year,'tanggal');
 
       $data['flag'] = 1;
 
@@ -1010,6 +1010,7 @@ class Admin extends CI_Controller{
     $uri = $this->uri->segment(3);
     $where = array( 'id_transaksi' => $uri);
     $data['list_data'] = $this->M_admin->get_data('tb_barang_masuk',$where);
+    $data['list_customer'] = $this->M_admin->select('tb_customer');
     $data['nav'] = 2;
 
     // Load View
@@ -1026,7 +1027,7 @@ class Admin extends CI_Controller{
     if($this->form_validation->run() === TRUE)
     {
       $id_transaksi   = $this->input->post('id_transaksi',TRUE);
-      $costumer       = $this->input->post('customer',TRUE);
+      $customer       = $this->input->post('customer',TRUE);
       $tanggal_masuk  = $this->input->post('tanggal',TRUE);
       $tanggal_keluar = $this->input->post('tanggal_keluar',TRUE);
       $lokasi         = $this->input->post('lokasi',TRUE);
@@ -1039,7 +1040,7 @@ class Admin extends CI_Controller{
       $where = array( 'id_transaksi' => $id_transaksi);
       $data = array(
               'id_transaksi'    => $id_transaksi,
-              'customer'        => $costumer,
+              'id_customer'     => $customer,
               'tanggal_masuk'   => $tanggal_masuk,
               'tanggal_keluar'  => $tanggal_keluar,
               'lokasi'          => $lokasi,
@@ -1084,7 +1085,7 @@ class Admin extends CI_Controller{
 
   public function tabel_barangkeluar()
   {
-    $data['list_data'] = $this->M_admin->select('tb_barang_keluar');
+    $data['list_data'] = $this->M_admin->read_join('tb_barang_keluar');
     $data['nav'] = 2;
 
     // Load View

@@ -120,7 +120,7 @@
                         <?php foreach($barkel as $dd): ?>
                           <td><?=$no?></td>
                           <td><?=$dd->id_transaksi?></td>
-                          <td><?=$dd->customer?></td>
+                          <td><?=$dd->nama_customer?></td>
                           <td><?=$dd->tanggal_masuk?></td>
                           <td><?=$dd->tanggal_keluar?></td>
                           <td><?=$dd->lokasi?></td>

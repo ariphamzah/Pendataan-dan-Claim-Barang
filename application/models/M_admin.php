@@ -44,6 +44,16 @@ class M_admin extends CI_Model
   {
     $query = $this->db->select('*')
                       ->from($tabel)
+                      ->join('tb_customer', $tabel.'.id_customer = tb_customer.id_customer')
+                      ->where("MONTH(".$tang.")='".$month."' AND YEAR(".$tang.")='".$year."'")
+                      ->get();
+    return $query->result();
+  }
+
+  public function get_data_report_masuk($tabel,$month,$year,$tang)
+  {
+    $query = $this->db->select('*')
+                      ->from($tabel)
                       ->join('tb_customer', $tabel.'.satuan = tb_customer.id_customer')
                       ->where("MONTH(".$tang.")='".$month."' AND YEAR(".$tang.")='".$year."'")
                       ->get();
@@ -114,7 +124,7 @@ class M_admin extends CI_Model
 	{
     $query = $this->db->select('*')
                       ->from($table)
-                      ->join('tb_customer', $table.'.satuan = tb_customer.id_customer')
+                      ->join('tb_customer', $table.'.id_customer = tb_customer.id_customer')
                       ->get();
 
     return $query->result();

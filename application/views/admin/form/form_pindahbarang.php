@@ -48,8 +48,13 @@
                       <input type="text" name="id_transaksi" style="width:60%;display:inline;" class="form-control responsive" readonly="readonly" value="<?=$d->id_transaksi?>">
                     </div>
                     <div class="form-group">
-                      <label for="tanggal" style="margin-right:74px;">Nama Customer</label>
-                      <input type="text" name="customer" style="width:60%;display:inline;" class="form-control responsive">
+                      <label for="customer" style="margin-right:74px;">Nama Customer</label>
+                      <select class="form-control" name="customer" style="width:60%;display:inline;" class="form-control responsive">
+                        <option value="" selected="">-- Pilih --</option>
+                        <?php foreach ($list_customer as $s) { ?>
+                          <option value="<?= $s->id_customer ?>"><?= $s->nama_customer ?></option>
+                        <?php } ?>
+                      </select>
                     </div>
                     <div class="form-group">
                       <label for="tanggal" style="margin-right:81px;">Tanggal Masuk</label>
@@ -77,9 +82,7 @@
                     </div>
                     <div class="form-group">
                       <label for="satuan" style="margin-right:129px;">Satuan</label>
-                      <select class="form-control responsive" name="satuan" style="width:60%;display:inline;" readonly="readonly">
-                        <option value="<?=$d->satuan?>" readonly="readonly" selected=""><?=$d->satuan?></option>
-                      </select>
+                      <input type="text" name="satuan" style="width:60%;display:inline;"  readonly="readonly" class="form-control responsive" id="satuan" max="<?=$d->satuan?>" value="<?=$d->satuan?>">
                     </div>
                     <div class="form-group">
                       <label for="jumlah" style="margin-right:126px;">Jumlah</label>
