@@ -1,17 +1,17 @@
 <?php
-	$id_satuan = '';
-	$kode_satuan = '';
-	$nama_satuan = '';
+	$id_customer = '';
+	$kode_customer = '';
+	$nama_customer = '';
   $flag = 0;
-  $link = base_url('admin/proses_satuan_insert');
+  $link = base_url('admin/proses_customer_insert');
 
-	if(isset($data_satuan)){
-		foreach($data_satuan as $d){
-      $id_satuan=$d->id_satuan;
-      $kode_satuan=$d->kode_satuan;
-      $nama_satuan=$d->nama_satuan;
+	if(isset($data_customer)){
+		foreach($data_customer as $d){
+      $id_customer=$d->id_customer;
+      $kode_customer=$d->kode_customer;
+      $nama_customer=$d->nama_customer;
       $flag = 1;
-      $link=base_url('admin/proses_satuan_update');
+      $link=base_url('admin/proses_customer_update');
     }
 	}
 ?>
@@ -67,13 +67,13 @@
 
                   <div class="box-body">
                     <div class="form-group">
-                      <input type="hidden" name="id_satuan" value="<?= $id_satuan ?>">
-                      <label for="kode_satuan" style="margin-right:124px;">Kode Customer</label>
-                      <input type="text" name="kode_satuan" style="width:60%;display:inline;" class="form-control responsive" id="kode_satuan" value="<?= $kode_satuan ?>" placeholder="Kode Customer">
+                      <input type="hidden" name="id_customer" value="<?= $id_customer ?>">
+                      <label for="kode_customer" style="margin-right:124px;">Kode Customer</label>
+                      <input type="text" name="kode_customer" style="width:60%;display:inline;" class="form-control responsive" id="kode_customer" value="<?= $kode_customer ?>" placeholder="Kode Customer">
                     </div>
                     <div class="form-group">
-                      <label for="nama_satuan" style="margin-right:120px;">Nama Customer</label>
-                      <input type="text" name="nama_satuan" style="width:60%;display:inline;" class="form-control responsive" id="nama_satuan" value="<?= $nama_satuan ?>" placeholder="Nama Customer">
+                      <label for="nama_customer" style="margin-right:120px;">Nama Customer</label>
+                      <input type="text" name="nama_customer" style="width:60%;display:inline;" class="form-control responsive" id="nama_customer" value="<?= $nama_customer ?>" placeholder="Nama Customer">
                     </div>
                     <center>
                     <div class="form-group" style=" margin-top:50px; margin-bottom:50px;">
@@ -84,7 +84,7 @@
                     <!-- /.box-body -->
                     <div class="box-footer" style="width:90%;">
                       <a type="button" class="btn btn-default" style="margin-right:5px; responsive" onclick="history.back(-1)" name="btn_kembali"><i class="fa fa-arrow-left" aria-hidden="true"></i> Kembali</a>
-                      <a type="button" class="btn btn-info" style="margin-right:29% display:inline; responsive" href="<?=base_url('admin/tabel_satuan')?>" name="btn_listsatuan"><i class="fa fa-table" aria-hidden="true"></i> Lihat Satuan</a>
+                      <a type="button" class="btn btn-info" style="margin-right:29% display:inline; responsive" href="<?=base_url('admin/tabel_customer')?>" name="btn_listcustomer"><i class="fa fa-table" aria-hidden="true"></i> Lihat customer</a>
                     </div>
                   </div>
                 </form>

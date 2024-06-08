@@ -49,7 +49,7 @@
                 <tr>
                   <th>No</th>
                   <th>ID Transaksi</th>
-                  <th>Nama Curtomer</th>
+                  <th>Nama Customer</th>
                   <th>Tanggal Masuk</th>
                   <th>Tanggal Keluar</th>
                   <th>Lokasi</th>

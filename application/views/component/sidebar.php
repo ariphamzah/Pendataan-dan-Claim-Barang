@@ -31,7 +31,7 @@
       </a>
       <ul class="treeview-menu">
         <li class="<?= ($nav == '0')?'active':'' ?>"><a href="<?= base_url('admin/form_barangmasuk') ?>"><i class="fa fa-circle-o"></i> Barang Masuk</a></li>
-        <li class="<?= ($nav == '4')?'active':'' ?>"><a href="<?= base_url('admin/form_satuan') ?>"><i class="fa fa-circle-o"></i> List Customer</a></li>
+        <li class="<?= ($nav == '4')?'active':'' ?>"><a href="<?= base_url('admin/form_customer') ?>"><i class="fa fa-circle-o"></i> Form Customer</a></li>
         <li class="<?= ($nav == '9')?'active':'' ?>"><a href="<?= base_url('admin/form_claimbarang') ?>"><i class="fa fa-circle-o"></i> Claim Barang</a></li>
       </ul>
     </li>
@@ -51,7 +51,7 @@
 
         <?php if($this->session->userdata('role') == 1){ ?>
 
-        <li class="<?= ($nav == '3')?'active':'' ?>"><a href="<?= base_url('admin/tabel_satuan') ?>"><i class="fa fa-circle-o"></i> Tabel Satuan</a></li>
+        <li class="<?= ($nav == '3')?'active':'' ?>"><a href="<?= base_url('admin/tabel_customer') ?>"><i class="fa fa-circle-o"></i> Tabel Customer</a></li>
 
         <?php } ?>
       </ul>

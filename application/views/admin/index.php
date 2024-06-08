@@ -205,7 +205,7 @@
             </a>
             <ul class="treeview-menu">
               <li><a href="<?php echo base_url('admin/form_barangmasuk') ?>"><i class="fa fa-circle-o"></i> Barang Masuk</a></li>
-              <li><a href="<?php echo base_url('admin/form_satuan') ?>"><i class="fa fa-circle-o"></i> Satuan Barang</a></li>
+              <li><a href="<?php echo base_url('admin/form_customer') ?>"><i class="fa fa-circle-o"></i> Form Customer</a></li>
               <li><a href="<?php echo base_url('admin/form_claimbarang') ?>"><i class="fa fa-circle-o"></i> Claim Barang</a></li>
             </ul>
           </li>
@@ -223,7 +223,7 @@
               <li><a href="<?= base_url('admin/tabel_claimbarang') ?>"><i class="fa fa-circle-o"></i> Tabel Claim Barang</a></li>
               
               <?php if($this->session->userdata('role') == 1){ ?>
-              <li><a href="<?= base_url('admin/tabel_satuan') ?>"><i class="fa fa-circle-o"></i> Tabel Satuan</a></li>
+              <li><a href="<?= base_url('admin/tabel_customer') ?>"><i class="fa fa-circle-o"></i> Tabel Customer</a></li>
               <?php } ?>
               
             </ul>

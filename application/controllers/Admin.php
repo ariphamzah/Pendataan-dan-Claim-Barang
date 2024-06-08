@@ -459,7 +459,7 @@ class Admin extends CI_Controller{
   }
 
   ####################################
-           // Report
+           // End Report
   ####################################
 
 
@@ -831,7 +831,7 @@ class Admin extends CI_Controller{
               // Customer
   ####################################
 
-  public function form_satuan()
+  public function form_customer()
   {
     if($this->session->userdata('role') == 0){ 
       redirect (base_url('admin/tabel_barangmasuk'));
@@ -843,146 +843,146 @@ class Admin extends CI_Controller{
     $this->load->view('component/header');
     $data['main_header'] = $this->load->view('component/main_header', $data, TRUE);
     $data['sidebar'] = $this->load->view('component/sidebar', NULL, TRUE);
-    $this->load->view('admin/form/form_satuan',$data);
+    $this->load->view('admin/form/form_customer',$data);
     $this->load->view('component/footer');
   }
 
-  public function edit_satuan()
+  public function edit_customer()
   {
     if($this->session->userdata('role') == 0){ 
       redirect (base_url('admin/tabel_barangmasuk'));
     }
 
     $uri = $this->uri->segment(3);
-    $where = array('id_satuan' => $uri);
-    $data['data_satuan'] = $this->M_admin->get_data('tb_satuan',$where);
+    $where = array('id_customer' => $uri);
+    $data['data_customer'] = $this->M_admin->get_data('tb_customer',$where);
     $data['nav'] = 4;
 
     // Load View
     $this->load->view('component/header');
     $data['main_header'] = $this->load->view('component/main_header', $data, TRUE);
     $data['sidebar'] = $this->load->view('component/sidebar', NULL, TRUE);
-    $this->load->view('admin/form/form_satuan',$data);
+    $this->load->view('admin/form/form_customer',$data);
     $this->load->view('component/footer');
   }
 
-  public function tabel_satuan()
+  public function tabel_customer()
   {
     if($this->session->userdata('role') == 0){ 
       redirect (base_url('admin/tabel_barangmasuk'));
     }
 
-    $data['list_data'] = $this->M_admin->select('tb_satuan');
+    $data['list_data'] = $this->M_admin->select('tb_customer');
     $data['nav'] = 3;
 
     // Load View
     $this->load->view('component/header');
     $data['main_header'] = $this->load->view('component/main_header', $data, TRUE);
     $data['sidebar'] = $this->load->view('component/sidebar', NULL, TRUE);
-    $this->load->view('admin/tabel/tabel_satuan',$data);
+    $this->load->view('admin/tabel/tabel_customer',$data);
     $this->load->view('component/footer');
   }
 
-  public function delete_satuan()
+  public function delete_customer()
   {
     if($this->session->userdata('role') == 0){ 
       redirect (base_url('admin/tabel_barangmasuk'));
     }
 
     $uri = $this->uri->segment(3);
-    $where = array('id_satuan' => $uri);
+    $where = array('id_customer' => $uri);
 
     $data_report = array(
       'id_report'        => 'RP-'.date("Y").random_string('numeric', 8),
       'user_report'      => $this->session->userdata('name'),
-      'jenis_report'     => 'report_satuan',
-      'note'             => 'Delete Satuan'
+      'jenis_report'     => 'report_customer',
+      'note'             => 'Delete customer'
     );
     
     $this->M_admin->insert('tb_report',$data_report);
 
-    $this->M_admin->delete('tb_satuan',$where);
-    redirect(base_url('admin/tabel_satuan'));
+    $this->M_admin->delete('tb_customer',$where);
+    redirect(base_url('admin/tabel_customer'));
   }
 
-  public function proses_satuan_insert()
+  public function proses_customer_insert()
   {
     if($this->session->userdata('role') == 0){ 
       redirect (base_url('admin/tabel_barangmasuk'));
     }
     
-    $this->form_validation->set_rules('kode_satuan','Kode Satuan','trim|required|max_length[100]');
-    $this->form_validation->set_rules('nama_satuan','Nama Satuan','trim|required|max_length[100]');
+    $this->form_validation->set_rules('kode_customer','Kode customer','trim|required|max_length[100]');
+    $this->form_validation->set_rules('nama_customer','Nama customer','trim|required|max_length[100]');
 
     if($this->form_validation->run() ==  TRUE)
     {
-      $kode_satuan = $this->input->post('kode_satuan' ,TRUE);
-      $nama_satuan = $this->input->post('nama_satuan' ,TRUE);
+      $kode_customer = $this->input->post('kode_customer' ,TRUE);
+      $nama_customer = $this->input->post('nama_customer' ,TRUE);
 
       $data = array(
-            'kode_satuan' => $kode_satuan,
-            'nama_satuan' => $nama_satuan
+            'kode_customer' => $kode_customer,
+            'nama_customer' => $nama_customer
       );
 
       $data_report = array(
         'id_report'        => 'RP-'.date("Y").random_string('numeric', 8),
         'user_report'      => $this->session->userdata('name'),
-        'jenis_report'     => 'report_satuan',
-        'note'             => 'Add Satuan'
+        'jenis_report'     => 'report_customer',
+        'note'             => 'Add customer'
       );
       
       $this->M_admin->insert('tb_report',$data_report);
       
-      $this->M_admin->insert('tb_satuan',$data);
+      $this->M_admin->insert('tb_customer',$data);
 
-      $this->session->set_flashdata('msg_berhasil','Data satuan Berhasil Ditambahkan');
-      redirect(base_url('admin/tabel_satuan'));
+      $this->session->set_flashdata('msg_berhasil','Data customer Berhasil Ditambahkan');
+      redirect(base_url('admin/tabel_customer'));
     }else {
-      $data['list_data'] = $this->M_admin->select('tb_satuan');
+      $data['list_data'] = $this->M_admin->select('tb_customer');
       $data['nav'] = 4;
 
       // Load View
       $this->load->view('component/header');
       $data['main_header'] = $this->load->view('component/main_header', $data, TRUE);
       $data['sidebar'] = $this->load->view('component/sidebar', NULL, TRUE);
-      $this->load->view('admin/form/form_satuan',$data);
+      $this->load->view('admin/form/form_customer',$data);
       $this->load->view('component/footer');
     }
   }
 
-  public function proses_satuan_update()
+  public function proses_customer_update()
   {
-    $this->form_validation->set_rules('kode_satuan','Kode Satuan','trim|required|max_length[100]');
-    $this->form_validation->set_rules('nama_satuan','Nama Satuan','trim|required|max_length[100]');
+    $this->form_validation->set_rules('kode_customer','Kode customer','trim|required|max_length[100]');
+    $this->form_validation->set_rules('nama_customer','Nama customer','trim|required|max_length[100]');
 
     if($this->form_validation->run() ==  TRUE)
     {
-      $id_satuan   = $this->input->post('id_satuan' ,TRUE);
-      $kode_satuan = $this->input->post('kode_satuan' ,TRUE);
-      $nama_satuan = $this->input->post('nama_satuan' ,TRUE);
+      $id_customer   = $this->input->post('id_customer' ,TRUE);
+      $kode_customer = $this->input->post('kode_customer' ,TRUE);
+      $nama_customer = $this->input->post('nama_customer' ,TRUE);
 
       $where = array(
-            'id_satuan' => $id_satuan
+            'id_customer' => $id_customer
       );
 
       $data = array(
-            'kode_satuan' => $kode_satuan,
-            'nama_satuan' => $nama_satuan
+            'kode_customer' => $kode_customer,
+            'nama_customer' => $nama_customer
       );
 
       $data_report = array(
         'id_report'        => 'RP-'.date("Y").random_string('numeric', 8),
         'user_report'      => $this->session->userdata('name'),
-        'jenis_report'     => 'report_satuan',
-        'note'             => 'Update Satuan'
+        'jenis_report'     => 'report_customer',
+        'note'             => 'Update customer'
       );
       
       $this->M_admin->insert('tb_report',$data_report);
 
-      $this->M_admin->update('tb_satuan',$data,$where);
+      $this->M_admin->update('tb_customer',$data,$where);
 
-      $this->session->set_flashdata('msg_berhasil','Data satuan Berhasil Di Update');
-      redirect(base_url('admin/tabel_satuan'));
+      $this->session->set_flashdata('msg_berhasil','Data customer Berhasil Di Update');
+      redirect(base_url('admin/tabel_customer'));
     }else {
        $data['nav'] = 4;
 
@@ -990,7 +990,7 @@ class Admin extends CI_Controller{
        $this->load->view('component/header');
        $data['main_header'] = $this->load->view('component/main_header', $data, TRUE);
        $data['sidebar'] = $this->load->view('component/sidebar', NULL, TRUE);
-       $this->load->view('admin/form/form_satuan',$data);
+       $this->load->view('admin/form/form_customer',$data);
        $this->load->view('component/footer');
     }
   }

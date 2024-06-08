@@ -12,12 +12,12 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Tabel Satuan
+        List Customer
       </h1>
       <ol class="breadcrumb">
         <li><a href="<?=base_url('admin')?>"><i class="fa fa-dashboard"></i> Home</a></li>
         <li>Tables</li>
-        <li class="active"><a href="<?=base_url('admin/tabel_satuan')?>">Tabel Satuan</a></li>
+        <li class="active"><a href="<?=base_url('admin/tabel_customer')?>">List Customer</a></li>
       </ol>
     </section>
 
@@ -27,7 +27,7 @@
         <div class="col-xs-12">
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title"><i class="fa fa-table" aria-hidden="true"></i> Stok Barang Masuk</h3>
+              <h3 class="box-title"><i class="fa fa-table" aria-hidden="true"></i> List Customer</h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
@@ -39,14 +39,14 @@
                </div>
               <?php } ?>
 
-              <a href="<?=base_url('admin/form_satuan')?>" style="margin-bottom:10px;" type="button" class="btn btn-primary" name="tambah_data"><i class="fa fa-plus-circle" aria-hidden="true"></i> Tambah Data</a>
+              <a href="<?=base_url('admin/form_customer')?>" style="margin-bottom:10px;" type="button" class="btn btn-primary" name="tambah_data"><i class="fa fa-plus-circle" aria-hidden="true"></i> Tambah Data</a>
               <div class="table-responsive">
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
                   <th>No</th>
-                  <th>Kode Satuan</th>
-                  <th>Nama Satuan</th>
+                  <th>Kode Customer</th>
+                  <th>Nama Customer</th>
                   <th>Update</th>
                   <th>Delete</th>
                 </tr>
@@ -57,10 +57,10 @@
                   <?php $no = 1;?>
                   <?php foreach($list_data as $dd): ?>
                     <td><?=$no?></td>
-                    <td><?=$dd->kode_satuan?></td>
-                    <td><?=$dd->nama_satuan?></td>
-                    <td><a type="button" class="btn btn-info"  href="<?=base_url('admin/edit_satuan/'.$dd->id_satuan)?>" name="btn_update" style="margin:auto;"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
-                    <td><a type="button" class="btn btn-danger btn-delete"  href="<?=base_url('admin/delete_satuan/'.$dd->id_satuan)?>" name="btn_delete" style="margin:auto;"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
+                    <td><?=$dd->kode_customer?></td>
+                    <td><?=$dd->nama_customer?></td>
+                    <td><a type="button" class="btn btn-info"  href="<?=base_url('admin/edit_customer/'.$dd->id_customer)?>" name="btn_update" style="margin:auto;"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
+                    <td><a type="button" class="btn btn-danger btn-delete"  href="<?=base_url('admin/delete_customer/'.$dd->id_customer)?>" name="btn_delete" style="margin:auto;"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
                 </tr>
               <?php $no++; ?>
               <?php endforeach;?>
@@ -71,8 +71,8 @@
                 <tfoot>
                 <tr>
                   <th>No</th>
-                  <th>Kode Satuan</th>
-                  <th>Nama Satuan</th>
+                  <th>Kode Customer</th>
+                  <th>Nama Customer</th>
                   <th>Update</th>
                   <th>Delete</th>
                 </tr>
