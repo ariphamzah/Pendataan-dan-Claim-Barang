@@ -473,7 +473,6 @@ class Admin extends CI_Controller{
     if($this->session->userdata('role') == 0){ 
       redirect (base_url('admin/tabel_barangmasuk'));
     }
-    $data['list_satuan'] = $this->M_admin->select('tb_satuan');
     $data['nav'] = 0;
     
     // Load View
@@ -491,7 +490,6 @@ class Admin extends CI_Controller{
     }
 
     $where = array('id_transaksi' => $id_transaksi);
-    $data['list_satuan'] = $this->M_admin->select('tb_satuan');
     $data['masuk'] = $this->M_admin->get_data('tb_barang_masuk',$where);
     $data['nav'] = 0;
     
@@ -505,7 +503,7 @@ class Admin extends CI_Controller{
 
   public function tabel_barangmasuk()
   {
-    $data['list_data'] = $this->M_admin->read_join('tb_barang_masuk');
+    $data['list_data'] = $this->M_admin->select('tb_barang_masuk');
     $data['nav'] = 1;
 
     // Load View
@@ -542,6 +540,7 @@ class Admin extends CI_Controller{
   {
     $this->form_validation->set_rules('lokasi','Lokasi','required');
     $this->form_validation->set_rules('kode_barang','Kode Barang','required');
+    $this->form_validation->set_rules('tanggal','Tanggal','required');
     $this->form_validation->set_rules('nama_barang','Nama Barang','required');
     $this->form_validation->set_rules('jumlah','Jumlah','required');
 
@@ -563,7 +562,7 @@ class Admin extends CI_Controller{
             'merk'         => $merk,
             'kode_barang'  => $kode_barang,
             'nama_barang'  => $nama_barang,
-            'id_satuan'       => $satuan,
+            'satuan'       => $satuan,
             'jumlah'       => $jumlah
       );
 
@@ -580,7 +579,6 @@ class Admin extends CI_Controller{
       $this->session->set_flashdata('msg_berhasil','Data Barang Berhasil Ditambahkan');
       redirect(base_url('admin/tabel_barangmasuk'));
     }else {
-      $data['list_satuan'] = $this->M_admin->select('tb_satuan');
       $data['nav'] = 0;
 
       // Load View
@@ -618,7 +616,7 @@ class Admin extends CI_Controller{
             'merk'         => $merk,
             'kode_barang'  => $kode_barang,
             'nama_barang'  => $nama_barang,
-            'id_satuan'    => $satuan,
+            'satuan'       => $satuan,
             'jumlah'       => $jumlah
       );
 
@@ -636,7 +634,7 @@ class Admin extends CI_Controller{
       redirect(base_url('admin/tabel_barangmasuk'));
     }else{
       $data['nav'] = 0;
-
+      
       // Load View
       $this->load->view('component/header');
       $data['main_header'] = $this->load->view('component/main_header', $data, TRUE);
@@ -830,7 +828,7 @@ class Admin extends CI_Controller{
 
 
   ####################################
-              // SATUAN
+              // Customer
   ####################################
 
   public function form_satuan()
@@ -1012,7 +1010,6 @@ class Admin extends CI_Controller{
     $uri = $this->uri->segment(3);
     $where = array( 'id_transaksi' => $uri);
     $data['list_data'] = $this->M_admin->get_data('tb_barang_masuk',$where);
-    $data['list_satuan'] = $this->M_admin->select('tb_satuan');
     $data['nav'] = 2;
 
     // Load View
@@ -1049,7 +1046,7 @@ class Admin extends CI_Controller{
               'merk'            => $merk,
               'kode_barang'     => $kode_barang,
               'nama_barang'     => $nama_barang,
-              'id_satuan'          => $satuan,
+              'satuan'          => $satuan,
               'jumlah'          => $jumlah
       );
 
@@ -1087,7 +1084,7 @@ class Admin extends CI_Controller{
 
   public function tabel_barangkeluar()
   {
-    $data['list_data'] = $this->M_admin->read_join('tb_barang_keluar');
+    $data['list_data'] = $this->M_admin->select('tb_barang_keluar');
     $data['nav'] = 2;
 
     // Load View

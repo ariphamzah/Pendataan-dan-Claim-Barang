@@ -78,13 +78,7 @@
                     <div class="form-group">
                       <label for="satuan" style="margin-right:129px;">Satuan</label>
                       <select class="form-control responsive" name="satuan" style="width:60%;display:inline;" readonly="readonly">
-                        <?php foreach($list_satuan as $s){?>
-                          <?php if($d->satuan == $s->nama_satuan){?>
                         <option value="<?=$d->satuan?>" readonly="readonly" selected=""><?=$d->satuan?></option>
-                        <?php }else{?>
-                        <option value="<?=$s->kode_satuan?>" readonly="readonly"><?=$s->nama_satuan?></option>
-                          <?php } ?>
-                          <?php } ?>
                       </select>
                     </div>
                     <div class="form-group">

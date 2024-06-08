@@ -18,7 +18,7 @@
       $merk=$d->merk;
       $kode_barang=$d->kode_barang;
       $nama_barang=$d->nama_barang;
-      $satuan=$d->id_satuan;
+      $satuan=$d->satuan;
       $jumlah=$d->jumlah;
       $flag=1;
       $link=base_url('admin/proses_databarang_masuk_update');
@@ -139,9 +139,9 @@
                       <label for="satuan" style="margin-right:129px;">Satuan</label>
                       <select class="form-control responsive" name="satuan" style="width:60%;display:inline;">
                         <option value="" selected="">-- Pilih --</option>
-                        <?php foreach ($list_satuan as $s) { ?>
-                          <option value="<?= $s->kode_satuan ?>" <?= $satuan==$s->kode_satuan?'selected':''; ?>><?= $s->nama_satuan ?></option>
-                        <?php } ?>
+                        <option value="UNIT" <?= $satuan=='UNIT'?'selected':''; ?>>UNIT</option>
+                        <option value="PCS" <?= $satuan=='PCS'?'selected':''; ?>>PCS</option>
+                        <option value="ROLL" <?= $satuan=='ROLL'?'selected':''; ?>>Roll</option>
                       </select>
                     </div>
                     <div class="form-group">

@@ -85,7 +85,7 @@
                     <td><?=$dd->merk?></td>
                     <td><?=$dd->kode_barang?></td>
                     <td><?=$dd->nama_barang?></td>
-                    <td><?=$dd->nama_satuan?></td>
+                    <td><?=$dd->satuan?></td>
                     <td><?=$dd->jumlah?></td>
 
                     <?php if($this->session->userdata('role') == 1){ ?>

@@ -78,7 +78,7 @@
                     <td><?=$dd->merk?></td>
                     <td><?=$dd->kode_barang?></td>
                     <td><?=$dd->nama_barang?></td>
-                    <td><?=$dd->nama_satuan?></td>
+                    <td><?=$dd->satuan?></td>
                     <td><?=$dd->jumlah?></td>
                     <?php if($this->session->userdata('role') == 1){ ?>
                     <td><a type="button" class="btn btn-danger btn-report"  href="<?=base_url('report/invoice/'.$dd->id_transaksi)?>" name="btn_report" style="margin:auto;"><i class="fa fa-file-text" aria-hidden="true"></i></a></td>

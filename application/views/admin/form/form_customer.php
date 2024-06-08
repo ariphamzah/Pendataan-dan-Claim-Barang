@@ -30,12 +30,12 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Input Satuan Barang
+        Input List Customer
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
         <li><a href="#">Forms</a></li>
-        <li class="active">Satuan Barang</li>
+        <li class="active">List Customer</li>
       </ol>
     </section>
 
@@ -46,7 +46,7 @@
           <div class="container">
             <div class="box box-primary" style="width:94%;">
               <div class="box-header with-border">
-                <h3 class="box-title"><i class="fa fa-archive" aria-hidden="true"></i><?= ($flag == 0 )?' Tambah':' Edit' ?> Satuan Barang</h3>
+                <h3 class="box-title"><i class="fa fa-archive" aria-hidden="true"></i><?= ($flag == 0 )?' Tambah':' Edit' ?> List Customer</h3>
               </div>
               <div class="container">
                 <form action="<?= $link ?>" role="form" method="post">
@@ -68,12 +68,12 @@
                   <div class="box-body">
                     <div class="form-group">
                       <input type="hidden" name="id_satuan" value="<?= $id_satuan ?>">
-                      <label for="kode_satuan" style="margin-right:124px;">Kode Satuan</label>
-                      <input type="text" name="kode_satuan" style="width:60%;display:inline;" class="form-control responsive" id="kode_satuan" value="<?= $kode_satuan ?>" placeholder="Kode Satuan">
+                      <label for="kode_satuan" style="margin-right:124px;">Kode Customer</label>
+                      <input type="text" name="kode_satuan" style="width:60%;display:inline;" class="form-control responsive" id="kode_satuan" value="<?= $kode_satuan ?>" placeholder="Kode Customer">
                     </div>
                     <div class="form-group">
-                      <label for="nama_satuan" style="margin-right:120px;">Nama Satuan</label>
-                      <input type="text" name="nama_satuan" style="width:60%;display:inline;" class="form-control responsive" id="nama_satuan" value="<?= $nama_satuan ?>" placeholder="Nama Satuan">
+                      <label for="nama_satuan" style="margin-right:120px;">Nama Customer</label>
+                      <input type="text" name="nama_satuan" style="width:60%;display:inline;" class="form-control responsive" id="nama_satuan" value="<?= $nama_satuan ?>" placeholder="Nama Customer">
                     </div>
                     <center>
                     <div class="form-group" style=" margin-top:50px; margin-bottom:50px;">
