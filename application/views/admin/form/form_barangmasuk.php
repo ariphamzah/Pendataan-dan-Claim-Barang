@@ -89,42 +89,11 @@
                       <input type="date" name="tanggal" style="width:60%;display:inline;" class="form-control responsive" autocomplete="off" value="<?= $tanggal ?>">
                     </div>
                     <div class="form-group">
-                      <label for="nama_barang" style="margin-right:132px;">Lokasi</label>
-                      <select class="form-control responsive" name="lokasi" style="width:60%;display:inline;">
-                        <option value="">-- Pilih --</option>
-                        <option value="Aceh" <?= $lokasi=='Aceh'?'selected':''; ?>>Aceh</option>
-                        <option value="Bali" <?= $lokasi=='Bali'?'selected':''; ?>>Bali</option>
-                        <option value="Bengkulu" <?= $lokasi=='Bengkulu'?'selected':''; ?>>Bengkulu</option>
-                        <option value="Jakarta" <?= $lokasi=='Jakarta'?'selected':''; ?>>Jakarta Raya</option>
-                        <option value="Jambi" <?= $lokasi=='Jambi'?'selected':''; ?>>Jambi</option>
-                        <option value="Jawa Tengah" <?= $lokasi=='Jawa Tengah'?'selected':''; ?>>Jawa Tengah</option>
-                        <option value="Jawa Timur"  <?= $lokasi=='Jawa Timur'?'selected':''; ?>>Jawa Timur</option>
-                        <option value="Jawa Barat" <?= $lokasi=='Jawa Barat'?'selected':''; ?>>Jawa Barat</option>
-                        <option value="Papua" <?= $lokasi=='Papua'?'selected':''; ?>>Papua</option>
-                        <option value="Yogyakarta" <?= $lokasi=='Yogyakarta'?'selected':''; ?>>Yogyakarta</option>
-                        <option value="Kalimantan Barat" <?= $lokasi=='Kalimantan Barat'?'selected':''; ?>>Kalimantan Barat</option>
-                        <option value="Kalimantan Selatan" <?= $lokasi=='Kalimantan Selatan'?'selected':''; ?>>Kalimantan Selatan</option>
-                        <option value="Kalimantan Tengah" <?= $lokasi=='Kalimantan Tengah'?'selected':''; ?>>Kalimantan Tengah</option>
-                        <option value="Kalimantan Timur" <?= $lokasi=='Kalimantan Timur'?'selected':''; ?>>Kalimantan Timur</option>
-                        <option value="Lampung" <?= $lokasi=='Lampung'?'selected':''; ?>>Lampung</option>
-                        <option value="NTB" <?= $lokasi=='NTB'?'selected':''; ?>>Nusa Tenggara Barat</option>
-                        <option value="NTT" <?= $lokasi=='NTT'?'selected':''; ?>>Nusa Tenggara Timur</option>
-                        <option value="Riau" <?= $lokasi=='Riau'?'selected':''; ?>>Riau</option>
-                        <option value="Sulawesi Selatan" <?= $lokasi=='Sulawesi Selatan'?'selected':''; ?>>Sulawesi Selatan</option>
-                        <option value="Sulawesi Utara" <?= $lokasi=='Sulawesi Utara'?'selected':''; ?>>Sulawesi Utara</option>
-                        <option value="Sulawesi Tengah" <?= $lokasi=='Sulawesi Tengah'?'selected':''; ?>>Sulawesi Tengah</option>
-                        <option value="Sulawesi Tenggara" <?= $lokasi=='Sulawesi Tenggara'?'selected':''; ?>>Sulawesi Tenggara</option>
-                        <option value="Sumatera Barat" <?= $lokasi=='Sumatera Barat'?'selected':''; ?>>Sumatera Barat</option>
-                        <option value="Sumatera Utara" <?= $lokasi=='Sumatera Utara'?'selected':''; ?>>Sumatera Utara</option>
-                        <option value="Maluku" <?= $lokasi=='Maluku'?'selected':''; ?>>Maluku</option>
-                        <option value="Maluku Utara" <?= $lokasi=='Maluku Utara'?'selected':''; ?>>Maluku Utara</option>
-                        <option value="Banten" <?= $lokasi=='Banten'?'selected':''; ?>>Banten</option>
-                        <option value="Gorontalo" <?= $lokasi=='Gorontalo'?'selected':''; ?>>Gorontalo</option>
-                        <option value="Bangka" <?= $lokasi=='Bangka'?'selected':''; ?>>Bangka Belitung</option>
-                      </select>
+                      <label for="lokasi" style="margin-right:132px;">Lokasi</label>
+                      <input type="text" name="lokasi" style="width:60%;display:inline;" class="form-control responsive" id="lokasi" placeholder="Lokasi" value="<?= $lokasi ?>">
                     </div>
                     <div class="form-group">
-                      <label for="id_transaksi" style="margin-right:94px;">Merk Barang</label>
+                      <label for="merk_barang" style="margin-right:94px;">Merk Barang</label>
                       <input type="text" name="merk_barang" style="width:60%;display:inline;" class="form-control responsive" id="merk_barang" placeholder="Merk Barang" value="<?= $merk ?>">
                     </div>
                     <div class="form-group">

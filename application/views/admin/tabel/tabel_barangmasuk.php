@@ -57,7 +57,7 @@
                 <thead>
                 <tr>
                   <th>No</th>
-                  <th>ID_Transaksi</th>
+                  <th>ID Transaksi</th>
                   <th>Tanggal</th>
                   <th>Lokasi</th>
                   <th>Merk Barang</th>
@@ -103,7 +103,7 @@
                 <tfoot>
                   <tr>
                     <th>No</th>
-                    <th>ID_Transaksi</th>
+                    <th>ID Transaksi</th>
                     <th>Tanggal</th>
                     <th>Lokasi</th>
                     <th>Merk Barang</th>

@@ -57,17 +57,17 @@
                 <thead>
                 <tr>
                   <th>No</th>
-                  <th>id claim</th>
-                  <th>tanggal</th>
-                  <th>nama costumer</th>
-                  <th>mekanik</th>
-                  <th>merk mesin</th>
-                  <th>type mesin</th>
-                  <th>nomor mesin</th>
-                  <th>nama part</th>
-                  <th>penyebab kerusakan</th>
-                  <th>status</th>
-                  <th>keterangan</th>
+                  <th>ID Claim</th>
+                  <th>Tanggal</th>
+                  <th>Nama Costumer</th>
+                  <th>Mekanik</th>
+                  <th>Merk Mesin</th>
+                  <th>Type Mesin</th>
+                  <th>Nomor Mesin</th>
+                  <th>Nama Part</th>
+                  <th>Penyebab Kerusakan</th>
+                  <th>Status</th>
+                  <th>Keterangan</th>
 
                   <?php if($this->session->userdata('role') == 1){ ?>
                   <th>Update</th>
@@ -105,17 +105,17 @@
                 <tfoot>
                   <tr>
                     <th>No</th>
-                    <th>id claim</th>
-                    <th>tanggal</th>
-                    <th>nama costumer</th>
-                    <th>mekanik</th>
-                    <th>merk mesin</th>
-                    <th>type mesin</th>
-                    <th>nomor mesin</th>
-                    <th>nama part</th>
-                    <th>penyebab kerusakan</th>
-                    <th>status</th>
-                    <th>keterangan</th>
+                    <th>ID Claim</th>
+                    <th>Tanggal</th>
+                    <th>Nama Costumer</th>
+                    <th>Mekanik</th>
+                    <th>Merk Mesin</th>
+                    <th>Type Mesin</th>
+                    <th>Nomor Mesin</th>
+                    <th>Nama Part</th>
+                    <th>Penyebab Kerusakan</th>
+                    <th>Status</th>
+                    <th>Keterangan</th>
 
                     <?php if($this->session->userdata('role') == 1){ ?>
                     <th>Update</th>
