@@ -653,7 +653,7 @@ class Admin extends CI_Controller{
 
   public function tabel_claimbarang()
   {
-    $data['list_data'] = $this->M_admin->select('tb_claim_barang');
+    $data['list_data'] = $this->M_admin->read_join('tb_claim_barang');
     $data['nav'] = 8;
 
     // Load View
@@ -670,6 +670,7 @@ class Admin extends CI_Controller{
       redirect (base_url('admin/tabel_claimbarang'));
     }
     $data['list_data'] = $this->M_admin->select('tb_claim_barang');
+    $data['list_customer'] = $this->M_admin->select('tb_customer');
     $data['nav'] = 9;
     
     // Load View
@@ -689,6 +690,7 @@ class Admin extends CI_Controller{
     $where = array('id_claim' => $id_claim);
     $data['list_data'] = $this->M_admin->select('tb_claim_barang');
     $data['masuk'] = $this->M_admin->get_data('tb_claim_barang',$where);
+    $data['list_customer'] = $this->M_admin->select('tb_customer');
     $data['nav'] = 9;
     
     // Load View
@@ -703,7 +705,7 @@ class Admin extends CI_Controller{
   {
 
     $this->form_validation->set_rules('tanggal','Tanggal','required');
-    $this->form_validation->set_rules('nama_customer','Nama Customer','required');
+    $this->form_validation->set_rules('customer','Nama Customer','required');
     $this->form_validation->set_rules('mekanik','Mekanik','required');
     $this->form_validation->set_rules('merk_mesin','Merk Mesin','required');
     $this->form_validation->set_rules('nama_part','Nama Part','required');
@@ -714,7 +716,7 @@ class Admin extends CI_Controller{
     {
       $id_claim                 = $this->input->post('id_claim',TRUE);
       $tanggal                  = $this->input->post('tanggal',TRUE);
-      $nama_customer            = $this->input->post('nama_customer',TRUE);
+      $nama_customer            = $this->input->post('customer',TRUE);
       $mekanik                  = $this->input->post('mekanik',TRUE);
       $merk_mesin               = $this->input->post('merk_mesin',TRUE);
       $type_mesin               = $this->input->post('type_mesin',TRUE);
@@ -727,7 +729,7 @@ class Admin extends CI_Controller{
       $data = array(
             'id_claim'              => $id_claim,
             'tanggal_claim'         => $tanggal,
-            'nama_customer'         => $nama_customer,
+            'id_customer'         => $nama_customer,
             'mekanik'               => $mekanik,
             'merk_mesin'            => $merk_mesin,
             'type_mesin'            => $type_mesin,
@@ -753,6 +755,7 @@ class Admin extends CI_Controller{
       redirect(base_url('admin/tabel_claimbarang'));
     }else{
       $data['nav'] = 9;
+      $data['list_customer'] = $this->M_admin->select('tb_customer');
     
       // Load View
       $this->load->view('component/header');
@@ -767,7 +770,7 @@ class Admin extends CI_Controller{
   {
 
     $this->form_validation->set_rules('tanggal','Tanggal','required');
-    $this->form_validation->set_rules('nama_customer','Nama Customer','required');
+    $this->form_validation->set_rules('customer','Nama Customer','required');
     $this->form_validation->set_rules('mekanik','Mekanik','required');
     $this->form_validation->set_rules('merk_mesin','Merk Mesin','required');
     $this->form_validation->set_rules('nama_part','Nama Part','required');
@@ -777,7 +780,7 @@ class Admin extends CI_Controller{
     {
       $id_claim                 = $this->input->post('id_claim',TRUE);
       $tanggal                  = $this->input->post('tanggal',TRUE);
-      $nama_customer            = $this->input->post('nama_customer',TRUE);
+      $nama_customer            = $this->input->post('customer',TRUE);
       $mekanik                  = $this->input->post('mekanik',TRUE);
       $merk_mesin               = $this->input->post('merk_mesin',TRUE);
       $type_mesin               = $this->input->post('type_mesin',TRUE);
@@ -791,7 +794,7 @@ class Admin extends CI_Controller{
       $data = array(
             'id_claim'              => $id_claim,
             'tanggal_claim'         => $tanggal,
-            'nama_customer'         => $nama_customer,
+            'id_customer'           => $nama_customer,
             'mekanik'               => $mekanik,
             'merk_mesin'            => $merk_mesin,
             'type_mesin'            => $type_mesin,
@@ -816,6 +819,7 @@ class Admin extends CI_Controller{
       redirect(base_url('admin/tabel_claimbarang'));
     }else{
       $data['nav'] = 9;
+      $data['list_customer'] = $this->M_admin->select('tb_customer');
     
       // Load View
       $this->load->view('component/header');

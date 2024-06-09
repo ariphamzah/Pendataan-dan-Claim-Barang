@@ -22,7 +22,7 @@
 
     <?php if($this->session->userdata('role') == 1){ ?>
 
-    <li class="treeview <?= ($nav != '0')?($nav != '4')?'':'active':'active' ?>" href="<?= site_url('Welcome') ?>">
+    <li class="treeview <?= ($nav != '0')?($nav != '9')?($nav != '4')?'':'active':'active':'active' ?>" href="<?= site_url('Welcome') ?>">
       <a href="#">
         <i class="fa fa-edit"></i> <span>Forms</span>
         <span class="pull-right-container">
@@ -37,7 +37,7 @@
     </li>
 
     <?php } ?>
-    <li class="treeview <?= ($nav != '1')?($nav != '2')?($nav != '3')?'':'active':'active':'active' ?>" href="<?= site_url('Welcome') ?>">
+    <li class="treeview <?= ($nav != '1')?($nav != '2')?($nav != '8')?($nav != '3')?'':'active':'active':'active':'active' ?>" href="<?= site_url('Welcome') ?>">
       <a href="#">
         <i class="fa fa-table"></i> <span>Tables</span>
         <span class="pull-right-container">

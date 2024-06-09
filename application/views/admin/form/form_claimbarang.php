@@ -1,7 +1,7 @@
 <?php
 	$id_claim = 'CLM-'.date("Y").random_string('numeric', 8);
 	$tanggal = '';
-	$nama_customer = '';
+	$customer = '';
 	$mekanik = '';
 	$merk_mesin = '';
 	$type_mesin = '';
@@ -17,7 +17,7 @@
 		foreach($masuk as $d){
       $id_claim=$d->id_claim;
       $tanggal=$d->tanggal_claim;
-      $nama_customer=$d->nama_customer;
+      $customer=$d->id_customer;
       $mekanik=$d->mekanik;
       $merk_mesin=$d->merk_mesin;
       $type_mesin=$d->type_mesin;
@@ -95,8 +95,13 @@
                       <input type="date" name="tanggal" style="width:60%;display:inline;" class="form-control responsive" autocomplete="off" value="<?= $tanggal ?>">
                     </div>
                     <div class="form-group">
-                      <label for="nama_customer" style="margin-right:74px;">Nama Customer</label>
-                      <input type="text" name="nama_customer" style="width:60%; display:inline;" class="form-control responsive" id="nama_customer" placeholder="Nama Customer" value="<?= $nama_customer ?>">
+                      <label for="customer" style="margin-right:74px;">Nama Customer</label>
+                      <select class="form-control" name="customer" style="width:60%;display:inline;" class="form-control responsive">
+                      <option value="" selected="">-- Pilih --</option>
+                        <?php foreach ($list_customer as $s) { ?>
+                          <option value="<?= $s->id_customer ?>" <?= $customer==$s->id_customer?'selected':''; ?>><?= $s->nama_customer ?></option>
+                        <?php } ?>
+                      </select>
                     </div>
                     <div class="form-group">
                       <label for="mekanik" style="margin-right:120px;">Mekanik</label>
