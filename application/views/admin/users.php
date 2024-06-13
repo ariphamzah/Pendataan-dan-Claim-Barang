@@ -53,7 +53,7 @@
                 </thead>
                 <tbody>
                   <tr>
-                    <?php if(is_array($list_users)){ ?>
+                    <?php if(!empty($list_users)){ ?>
                     <?php foreach($list_users as $dd): ?>
                       <td><?=$dd->username?></td>
                       <td><?=$dd->email?></td>

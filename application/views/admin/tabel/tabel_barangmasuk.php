@@ -75,7 +75,7 @@
                 </thead>
                 <tbody>
                 <tr>
-                  <?php if(is_array($list_data)){ ?>
+                  <?php if(!empty($list_data)){ ?>
                   <?php $no = 1;?>
                   <?php foreach($list_data as $dd): ?>
                     <td><?=$no?></td>
