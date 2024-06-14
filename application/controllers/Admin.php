@@ -261,7 +261,7 @@ class Admin extends CI_Controller{
       'id_report'        => 'RP-'.date("Y").random_string('numeric', 8),
       'user_report'      => $this->session->userdata('name'),
       'jenis_report'     => 'report_user',
-      'note'             => 'Delete User '.$username
+      'note'             => 'Delete User'. ' (' .$username. ')' 
     );
     
     $this->M_admin->insert('tb_report',$data_report);
@@ -291,7 +291,7 @@ class Admin extends CI_Controller{
       'id_report'        => 'RP-'.date("Y").random_string('numeric', 8),
       'user_report'      => $this->session->userdata('name'),
       'jenis_report'     => 'report_user',
-      'note'             => 'Reset Password User '.$reset
+      'note'             => 'Reset Password User'. ' (' .$reset. ')' 
     );
     
     $this->M_admin->insert('tb_report',$data_report);
@@ -339,7 +339,7 @@ class Admin extends CI_Controller{
             'id_report'        => 'RP-'.date("Y").random_string('numeric', 8),
             'user_report'      => $this->session->userdata('name'),
             'jenis_report'     => 'report_user',
-            'note'             => 'Add User '.$username
+            'note'             => 'Add User'. ' (' .$username. ')' 
           );
           
           $this->M_admin->insert('tb_report',$data_report);
@@ -350,12 +350,16 @@ class Admin extends CI_Controller{
           redirect(base_url('admin/users'));
         }}
       }else {
+        $data['token_generate'] = $this->token_generate();
+        $this->session->set_userdata($data);
+        $data['nav'] = 6;
+
         // Load View
         $this->load->view('component/header');
         $data['main_header'] = $this->load->view('component/main_header', $data, TRUE);
         $data['sidebar'] = $this->load->view('component/sidebar', NULL, TRUE);
-        $this->load->view('admin/form/form_users',$data);
-        $this->load->view('component/footer');    
+        $this->load->view('admin/form/form_users', $data);
+        $this->load->view('component/footer');   
     }
   }
 
@@ -389,7 +393,7 @@ class Admin extends CI_Controller{
           'id_report'        => 'RP-'.date("Y").random_string('numeric', 8),
           'user_report'      => $this->session->userdata('name'),
           'jenis_report'     => 'report_user',
-          'note'             => 'Update User '.$username
+          'note'             => 'Update User'. ' (' .$username. ')' 
         );
         
         $this->M_admin->insert('tb_report',$data_report);
@@ -469,6 +473,19 @@ class Admin extends CI_Controller{
     $data['main_header'] = $this->load->view('component/main_header', $data, TRUE);
     $data['sidebar'] = $this->load->view('component/sidebar', NULL, TRUE);
     $this->load->view('admin/tabel/tabel_reportclaim',$data);
+    $this->load->view('component/footer');
+  }
+
+  public function report_kegiatan()
+  {
+    $data['list_data'] = $this->M_admin->select('tb_report');
+    $data['nav'] = 20;
+
+    // Load View
+    $this->load->view('component/header');
+    $data['main_header'] = $this->load->view('component/main_header', $data, TRUE);
+    $data['sidebar'] = $this->load->view('component/sidebar', NULL, TRUE);
+    $this->load->view('admin/report_kegiatan',$data);
     $this->load->view('component/footer');
   }
 
@@ -863,8 +880,8 @@ class Admin extends CI_Controller{
           'id_report'        => 'RP-'.date("Y").random_string('numeric', 8),
           'user_report'      => $this->session->userdata('name'),
           'jenis_report'     => 'report_claim',
-          'note'             => 'Update Claim '.$id_claim. ' (' .$nama_mekanik. ')'
-      );
+          'note'             => 'Update Claim '.$id_claim. ' (' .$nama_mekanik. ')' 
+        );
       
       $this->M_admin->update('tb_claim_barang',$data,$where);
       $this->M_admin->insert('tb_report',$data_report);
@@ -987,7 +1004,7 @@ class Admin extends CI_Controller{
         'id_report'        => 'RP-'.date("Y").random_string('numeric', 8),
         'user_report'      => $this->session->userdata('name'),
         'jenis_report'     => 'report_customer',
-        'note'             => 'Add customer'
+        'note'             => 'Add customer' .' (' .$nama_customer. ')'
       );
       
       $this->M_admin->insert('tb_report',$data_report);
@@ -1033,7 +1050,7 @@ class Admin extends CI_Controller{
         'id_report'        => 'RP-'.date("Y").random_string('numeric', 8),
         'user_report'      => $this->session->userdata('name'),
         'jenis_report'     => 'report_customer',
-        'note'             => 'Update customer'
+        'note'             => 'Update customer' .' (' .$nama_customer. ')'
       );
       
       $this->M_admin->insert('tb_report',$data_report);

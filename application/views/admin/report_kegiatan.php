@@ -12,12 +12,12 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Report Claim 
+        Report Kegiatan 
       </h1>
       <ol class="breadcrumb">
         <li><a href="<?=base_url('admin')?>"><i class="fa fa-dashboard"></i> Home</a></li>
         <li>Report</li>
-        <li class="active"><a href="<?=base_url('admin/report_claim')?>">Report Claim</li>
+        <li class="active"><a href="<?=base_url('admin/report_claim')?>">Report kegiatan</li>
       </ol>
     </section>
 
@@ -27,7 +27,7 @@
         <div class="col-xs-12">
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title"><i class="fa fa-table" aria-hidden="true"></i> List Report Claim</h3>
+              <h3 class="box-title"><i class="fa fa-table" aria-hidden="true"></i> List Report kegiatan</h3>
             </div>
             
             <div class="box-body">
@@ -53,17 +53,10 @@
                 <thead>
                 <tr>
                   <th>No</th>
-                  <th>ID Claim</th>
-                  <th>Tanggal</th>
-                  <th>Nama Costumer</th>
-                  <th>Mekanik</th>
-                  <th>Merk Mesin</th>
-                  <th>Type Mesin</th>
-                  <th>Nomor Mesin</th>
-                  <th>Nama Part</th>
-                  <th>Jumlah</th>
-                  <th>Penyebab Kerusakan</th>
-                  <th>Status</th>
+                  <th>ID kegiatan</th>
+                  <th>User Report</th>
+                  <th>Jenis Report</th>
+                  <th>Tanggal Report</th>
                   <th>Keterangan</th>
                 </tr>
                 </thead>
@@ -73,18 +66,11 @@
                   <?php $no = 1;?>
                   <?php foreach($list_data as $dd): ?>
                     <td><?=$no?></td>
-                    <td><?=$dd->id_claim?></td>
-                    <td><?=$dd->tanggal_claim?></td>
-                    <td><?=$dd->nama_customer?></td>
-                    <td><?=$dd->mekanik?></td>
-                    <td><?=$dd->merk_mesin?></td>
-                    <td><?=$dd->type_mesin?></td>
-                    <td><?=$dd->nomor_mesin?></td>
-                    <td><?=$dd->nama_part?></td>
-                    <td><?=$dd->jumlah?></td>
-                    <td><?=$dd->penyebab_kerusakan?></td>
-                    <td><?=$dd->status?></td>
-                    <td><?=$dd->keterangan?></td>
+                    <td><?=$dd->id_report?></td>
+                    <td><?=$dd->user_report?></td>
+                    <td><?=$dd->jenis_report?></td>
+                    <td><?=$dd->tanggal_report?></td>
+                    <td><?=$dd->note?></td>
                 </tr>
               <?php $no++; ?>
               <?php endforeach;?>
@@ -93,21 +79,14 @@
               <?php } ?>
                 </tbody>
                 <tfoot>
-                  <tr>
-                    <th>No</th>
-                    <th>ID Claim</th>
-                    <th>Tanggal</th>
-                    <th>Nama Costumer</th>
-                    <th>Mekanik</th>
-                    <th>Merk Mesin</th>
-                    <th>Type Mesin</th>
-                    <th>Nomor Mesin</th>
-                    <th>Nama Part</th>
-                    <th>Jumlah</th>
-                    <th>Penyebab Kerusakan</th>
-                    <th>Status</th>
-                    <th>Keterangan</th>
-                  </tr>
+                <tr>
+                  <th>No</th>
+                  <th>ID kegiatan</th>
+                  <th>User Report</th>
+                  <th>Jenis Report</th>
+                  <th>Tanggal Report</th>
+                  <th>Keterangan</th>
+                </tr>
                 </tfoot>
               </table>
               </div>
