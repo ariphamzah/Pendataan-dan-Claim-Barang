@@ -13,7 +13,8 @@ class Admin extends CI_Controller{
   public function index(){
     if($this->session->userdata('status') == 'login'){
       $data['stokBarangMasuk'] = $this->M_admin->sum('tb_barang_masuk','jumlah');
-      $data['stokBarangKeluar'] = $this->M_admin->sum('tb_barang_keluar','jumlah');      
+      $data['stokBarangKeluar'] = $this->M_admin->sum('tb_barang_keluar','jumlah');
+      $data['listClaim'] = $this->M_admin->sum('tb_claim_barang','jumlah');      
       $data['dataUser'] = $this->M_admin->numrows('user');
       
       $this->load->view('admin/index',$data);
@@ -458,6 +459,19 @@ class Admin extends CI_Controller{
     $this->load->view('component/footer');
   }
 
+  public function report_claim()
+  {
+    $data['list_data'] = $this->M_admin->read_join('tb_report_claim');
+    $data['nav'] = 10;
+
+    // Load View
+    $this->load->view('component/header');
+    $data['main_header'] = $this->load->view('component/main_header', $data, TRUE);
+    $data['sidebar'] = $this->load->view('component/sidebar', NULL, TRUE);
+    $this->load->view('admin/tabel/tabel_reportclaim',$data);
+    $this->load->view('component/footer');
+  }
+
   ####################################
            // End Report
   ####################################
@@ -666,9 +680,6 @@ class Admin extends CI_Controller{
 
   public function form_claimbarang()
   {
-    if($this->session->userdata('role') == 0){ 
-      redirect (base_url('admin/tabel_claimbarang'));
-    }
     $data['list_data'] = $this->M_admin->select('tb_claim_barang');
     $data['list_customer'] = $this->M_admin->select('tb_customer');
     $data['nav'] = 9;
@@ -710,6 +721,7 @@ class Admin extends CI_Controller{
     $this->form_validation->set_rules('merk_mesin','Merk Mesin','required');
     $this->form_validation->set_rules('nama_part','Nama Part','required');
     $this->form_validation->set_rules('nomor_mesin','Nomer Mesin','required');
+    $this->form_validation->set_rules('jumlah','Jumlah','required');
 
 
     if($this->form_validation->run() == TRUE)
@@ -717,26 +729,34 @@ class Admin extends CI_Controller{
       $id_claim                 = $this->input->post('id_claim',TRUE);
       $tanggal                  = $this->input->post('tanggal',TRUE);
       $nama_customer            = $this->input->post('customer',TRUE);
-      $mekanik                  = $this->input->post('mekanik',TRUE);
       $merk_mesin               = $this->input->post('merk_mesin',TRUE);
       $type_mesin               = $this->input->post('type_mesin',TRUE);
       $nomor_mesin              = $this->input->post('nomor_mesin',TRUE);
       $nama_part                = $this->input->post('nama_part',TRUE);
+      $jumlah                   = $this->input->post('jumlah',TRUE);
       $penyebab_kerusakan       = $this->input->post('penyebab_kerusakan',TRUE);
       $status                   = $this->input->post('status',TRUE);
       $keterangan               = $this->input->post('keterangan',TRUE);
 
+      if($this->session->userdata('role') == 0){ 
+        $nama_mekanik                 = $this->session->userdata('name');
+      }
+      else {
+        $nama_mekanik                 = $this->input->post('mekanik',TRUE);
+      }
+
       $data = array(
             'id_claim'              => $id_claim,
             'tanggal_claim'         => $tanggal,
-            'id_customer'         => $nama_customer,
-            'mekanik'               => $mekanik,
+            'id_customer'           => $nama_customer,
+            'mekanik'               => $nama_mekanik,
             'merk_mesin'            => $merk_mesin,
             'type_mesin'            => $type_mesin,
             'nomor_mesin'           => $nomor_mesin,
             'nama_part'             => $nama_part,
+            'jumlah'                => $jumlah,
             'penyebab_kerusakan'    => $penyebab_kerusakan,
-            'status'                => $status,
+            'status'                => 'Di Ajukan',
             'keterangan'            => $keterangan
 
       );
@@ -745,7 +765,7 @@ class Admin extends CI_Controller{
         'id_report'        => 'RP-'.date("Y").random_string('numeric', 8),
         'user_report'      => $this->session->userdata('name'),
         'jenis_report'     => 'report_claim',
-        'note'             => 'Add Claim '.$id_claim. ' (' .$nama_customer. ')' 
+        'note'             => 'Add Claim '.$id_claim. ' (' .$nama_mekanik. ')' 
       );
 
       $this->M_admin->insert('tb_claim_barang',$data);
@@ -790,26 +810,60 @@ class Admin extends CI_Controller{
       $status                   = $this->input->post('status',TRUE);
       $keterangan               = $this->input->post('keterangan',TRUE);
 
-      $where = array('id_claim' => $id_claim);
-      $data = array(
-            'id_claim'              => $id_claim,
-            'tanggal_claim'         => $tanggal,
-            'id_customer'           => $nama_customer,
-            'mekanik'               => $mekanik,
-            'merk_mesin'            => $merk_mesin,
-            'type_mesin'            => $type_mesin,
-            'nomor_mesin'           => $nomor_mesin,
-            'nama_part'             => $nama_part,
-            'penyebab_kerusakan'    => $penyebab_kerusakan,
-            'status'                => $status,
-            'keterangan'            => $keterangan
-      );
+      if ($status == "Selesai" || $status == "Di Tolak"){
+    
+        $where = array('id_claim' => $id_claim);
 
-      $data_report = array(
-        'id_report'        => 'RP-'.date("Y").random_string('numeric', 8),
-        'user_report'      => $this->session->userdata('name'),
-        'jenis_report'     => 'report_claim',
-        'note'             => 'Update Claim '.$id_claim. ' (' .$nama_customer. ')'
+        $data_report = array(
+          'id_report'        => 'RP-'.date("Y").random_string('numeric', 8),
+          'user_report'      => $this->session->userdata('name'),
+          'jenis_report'     => 'report_claim',
+          'note'             => 'Status Barang '.$mekanik
+        );
+
+        $data = array(
+          'id_claim'              => $id_claim,
+          'tanggal_claim'         => $tanggal,
+          'id_customer'           => $nama_customer,
+          'mekanik'               => $mekanik,
+          'merk_mesin'            => $merk_mesin,
+          'type_mesin'            => $type_mesin,
+          'nomor_mesin'           => $nomor_mesin,
+          'nama_part'             => $nama_part,
+          'penyebab_kerusakan'    => $penyebab_kerusakan,
+          'status'                => $status,
+          'keterangan'            => $keterangan
+        );
+    
+        $this->M_admin->insert('tb_report',$data_report);
+        $this->M_admin->delete('tb_claim_barang',$where);
+        $this->M_admin->insert('tb_report_claim',$data);
+
+
+        redirect(base_url('admin/report_claim'));
+      }
+
+      else {
+        $where = array('id_claim' => $id_claim);
+        $data = array(
+              'id_claim'              => $id_claim,
+              'tanggal_claim'         => $tanggal,
+              'id_customer'           => $nama_customer,
+              'mekanik'               => $mekanik,
+              'merk_mesin'            => $merk_mesin,
+              'type_mesin'            => $type_mesin,
+              'nomor_mesin'           => $nomor_mesin,
+              'nama_part'             => $nama_part,
+              'penyebab_kerusakan'    => $penyebab_kerusakan,
+              'status'                => $status,
+              'keterangan'            => $keterangan
+        );
+
+        $data_report = array(
+          'id_report'        => 'RP-'.date("Y").random_string('numeric', 8),
+          'user_report'      => $this->session->userdata('name'),
+          'jenis_report'     => 'report_claim',
+          'note'             => 'Update Claim '.$id_claim. ' (' .$nama_mekanik. ')'
       );
       
       $this->M_admin->update('tb_claim_barang',$data,$where);
@@ -817,6 +871,7 @@ class Admin extends CI_Controller{
 
       $this->session->set_flashdata('msg_berhasil','Data Claim Berhasil Diupdate');
       redirect(base_url('admin/tabel_claimbarang'));
+      }
     }else{
       $data['nav'] = 9;
       $data['list_customer'] = $this->M_admin->select('tb_customer');

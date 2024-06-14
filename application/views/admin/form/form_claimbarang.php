@@ -7,6 +7,7 @@
 	$type_mesin = '';
 	$nomor_mesin = '';
 	$nama_part = '';
+  $jumlah = '';
   $penyebab_kerusakan = '';
   $status = '';
   $keterangan = '';
@@ -23,6 +24,7 @@
       $type_mesin=$d->type_mesin;
       $nomor_mesin=$d->nomor_mesin;
       $nama_part=$d->nama_part;
+      $jumlah=$d->jumlah;
       $penyebab_kerusakan=$d->penyebab_kerusakan;
       $status=$d->status;
       $keterangan=$d->keterangan;
@@ -124,13 +126,25 @@
                       <input type="text" name="nama_part" style="width:60%; display:inline;" class="form-control responsive" id="nama_part" placeholder="Nama Part" value="<?= $nama_part ?>">
                     </div>
                     <div class="form-group">
+                      <label for="jumlah" style="margin-right:126px;">Jumlah</label>
+                      <input type="number" name="jumlah" style="width:60%;display:inline;" class="form-control responsive" id="jumlah" placeholder="Jumlah" value="<?= $jumlah ?>">
+                    </div>
+                    <div class="form-group">
                       <label for="penyebab_kerusakan" style="margin-right:44px;">Penyebab Kerusakan</label>
                       <input type="text" name="penyebab_kerusakan" style="width:60%; display:inline;" class="form-control responsive" id="penyebab_kerusakan" placeholder="Penyebab Kerusakan" value="<?= $penyebab_kerusakan ?>">
                     </div>
-                    <div class="form-group">
-                      <label for="status" style="margin-right:134px;">Status</label>
-                      <input type="text" name="status" style="width:60%; display:inline;" class="form-control responsive" id="status" placeholder="Status" value="<?= $status ?>">
+                    <?php if($flag == 1){ ?>
+                      <div class="form-group">
+                      <label for="status" style="margin-right:129px;">Status</label>
+                      <select class="form-control responsive" name="status" style="width:60%;display:inline;">
+                        <option value="" selected="">-- Pilih --</option>
+                        <option value="Di Ajukan" <?= $status=='Di Ajukan'?'selected':''; ?>>Di Ajukan</option>
+                        <option value="Di Proses" <?= $status=='Di Proses'?'selected':''; ?>>Di Proses</option>
+                        <option value="Selesai" <?= $status=='Selesai'?'selected':''; ?>>Selesai</option>
+                        <option value="Di Tolak" <?= $status=='Di Tolak'?'selected':''; ?>>Di Tolak</option>
+                      </select>
                     </div>
+                    <?php } ?>
                     <div class="form-group">
                       <label for="keterangan" style="margin-right:102px;">Keterangan</label>
                       <input type="text" name="keterangan" style="width:60%; display:inline;" class="form-control responsive" id="keterangan" placeholder="Keterangan" value="<?= $keterangan ?>">

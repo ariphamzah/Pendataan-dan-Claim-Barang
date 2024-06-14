@@ -12,12 +12,12 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Tabel Claim Barang 
+        Report Claim 
       </h1>
       <ol class="breadcrumb">
         <li><a href="<?=base_url('admin')?>"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li>Tables</li>
-        <li class="active"><a href="<?=base_url('admin/tabel_barangmasuk')?>">Tabel Claim Barang</li>
+        <li>Report</li>
+        <li class="active"><a href="<?=base_url('admin/report_claim')?>">Report Claim</li>
       </ol>
     </section>
 
@@ -27,7 +27,7 @@
         <div class="col-xs-12">
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title"><i class="fa fa-table" aria-hidden="true"></i> Stok Claim Barang</h3>
+              <h3 class="box-title"><i class="fa fa-table" aria-hidden="true"></i> List Report Claim</h3>
             </div>
             
             <div class="box-body">
@@ -46,8 +46,6 @@
                </div>
               <?php } ?>
 
-              <a href="<?=base_url('admin/form_claimbarang')?>" style="margin-bottom:10px;" type="button" class="btn btn-primary" name="tambah_data"><i class="fa fa-plus-circle" aria-hidden="true"></i> Tambah Data Claim</a>
-
               <div class="table-responsive">
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
@@ -65,10 +63,6 @@
                   <th>Penyebab Kerusakan</th>
                   <th>Status</th>
                   <th>Keterangan</th>
-
-                  <?php if($this->session->userdata('role') == 1){ ?>
-                  <th>Update</th>
-                  <?php } ?>
                 </tr>
                 </thead>
                 <tbody>
@@ -89,10 +83,6 @@
                     <td><?=$dd->penyebab_kerusakan?></td>
                     <td><?=$dd->status?></td>
                     <td><?=$dd->keterangan?></td>
-
-                    <?php if($this->session->userdata('role') == 1){ ?>
-                    <td><a type="button" class="btn btn-info"  href="<?=base_url('admin/edit_claimbarang/'.$dd->id_claim)?>" name="btn_update" style="margin:auto;"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
-                    <?php } ?>
                 </tr>
               <?php $no++; ?>
               <?php endforeach;?>
@@ -115,10 +105,6 @@
                     <th>Penyebab Kerusakan</th>
                     <th>Status</th>
                     <th>Keterangan</th>
-
-                    <?php if($this->session->userdata('role') == 1){ ?>
-                    <th>Update</th>
-                    <?php } ?>
                   </tr>
                 </tfoot>
               </table>

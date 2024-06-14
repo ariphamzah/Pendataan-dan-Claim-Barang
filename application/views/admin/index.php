@@ -195,7 +195,6 @@
             <li><a href="<?php echo base_url() ?>assets/web_admin/pages/UI/modals.html"><i class="fa fa-circle-o"></i> Modals</a></li>
           </ul>
         </li> -->
-        <?php if($this->session->userdata('role') == 1){ ?>
           <li class="treeview">
             <a href="#">
               <i class="fa fa-edit"></i> <span>Forms</span>
@@ -204,12 +203,13 @@
               </span>
             </a>
             <ul class="treeview-menu">
-              <li><a href="<?php echo base_url('admin/form_barangmasuk') ?>"><i class="fa fa-circle-o"></i> Barang Masuk</a></li>
-              <li><a href="<?php echo base_url('admin/form_customer') ?>"><i class="fa fa-circle-o"></i> Form Customer</a></li>
               <li><a href="<?php echo base_url('admin/form_claimbarang') ?>"><i class="fa fa-circle-o"></i> Claim Barang</a></li>
+              <?php if($this->session->userdata('role') == 1){ ?>
+                <li><a href="<?php echo base_url('admin/form_barangmasuk') ?>"><i class="fa fa-circle-o"></i> Barang Masuk</a></li>
+                <li><a href="<?php echo base_url('admin/form_customer') ?>"><i class="fa fa-circle-o"></i> Form Customer</a></li>
+              <?php } ?>
             </ul>
           </li>
-          <?php } ?>
           <li class="treeview">
             <a href="#">
               <i class="fa fa-table"></i> <span>Tables</span>
@@ -236,6 +236,7 @@
             </a>
             <ul class="treeview-menu">
               <li><a href="<?php echo base_url('admin/report/0') ?>"><i class="fa fa-circle-o"></i> Report Barang</a></li>
+              <li><a href="<?php echo base_url('admin/report_claim') ?>"><i class="fa fa-circle-o"></i> Report Claim</a></li>
             </ul>
           </li>
 
@@ -311,6 +312,27 @@
                 <i class="ion ion-stats-bars"></i>
               </div>
               <a href="<?= base_url('admin/tabel_barangkeluar') ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+
+          <!-- ./col -->
+          <div class="col-lg-3 col-xs-6">
+            <!-- small box -->
+            <div class="small-box bg-orange">
+              <div class="inner">
+                <?php if (!empty($listClaim)) { ?>
+                  <?php foreach ($listClaim as $d) { ?>
+                    <h3><?= $d->jumlah ?></h3>
+                  <?php } ?>
+                <?php } else { ?>
+                  <h3>0</h3>
+                <?php } ?>
+                <p>List Claim</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-stats-bars"></i>
+              </div>
+              <a href="<?= base_url('admin/tabel_claimbarang') ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
             </div>
           </div>
 

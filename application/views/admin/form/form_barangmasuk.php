@@ -115,7 +115,7 @@
                     </div>
                     <div class="form-group">
                       <label for="jumlah" style="margin-right:126px;">Jumlah</label>
-                      <input type="number" name="jumlah" style="width:60%;display:inline;" class="form-control responsive" id="jumlah" value="<?= $jumlah ?>">
+                      <input type="number" name="jumlah" style="width:60%;display:inline;" class="form-control responsive" id="jumlah" placeholder="Jumlah" value="<?= $jumlah ?>">
                     </div>
                     <center>
                     <div class="form-group" style=" margin-top:50px; margin-bottom:50px;">

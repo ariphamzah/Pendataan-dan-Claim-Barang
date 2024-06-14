@@ -20,8 +20,6 @@
       </a>
     </li>
 
-    <?php if($this->session->userdata('role') == 1){ ?>
-
     <li class="treeview <?= ($nav != '0')?($nav != '9')?($nav != '4')?'':'active':'active':'active' ?>" href="<?= site_url('Welcome') ?>">
       <a href="#">
         <i class="fa fa-edit"></i> <span>Forms</span>
@@ -30,13 +28,14 @@
         </span>
       </a>
       <ul class="treeview-menu">
-        <li class="<?= ($nav == '0')?'active':'' ?>"><a href="<?= base_url('admin/form_barangmasuk') ?>"><i class="fa fa-circle-o"></i> Barang Masuk</a></li>
-        <li class="<?= ($nav == '4')?'active':'' ?>"><a href="<?= base_url('admin/form_customer') ?>"><i class="fa fa-circle-o"></i> Form Customer</a></li>
         <li class="<?= ($nav == '9')?'active':'' ?>"><a href="<?= base_url('admin/form_claimbarang') ?>"><i class="fa fa-circle-o"></i> Claim Barang</a></li>
+        <?php if($this->session->userdata('role') == 1){ ?>
+          <li class="<?= ($nav == '0')?'active':'' ?>"><a href="<?= base_url('admin/form_barangmasuk') ?>"><i class="fa fa-circle-o"></i> Barang Masuk</a></li>
+          <li class="<?= ($nav == '4')?'active':'' ?>"><a href="<?= base_url('admin/form_customer') ?>"><i class="fa fa-circle-o"></i> Form Customer</a></li>
+        <?php } ?>
       </ul>
     </li>
 
-    <?php } ?>
     <li class="treeview <?= ($nav != '1')?($nav != '2')?($nav != '8')?($nav != '3')?'':'active':'active':'active':'active' ?>" href="<?= site_url('Welcome') ?>">
       <a href="#">
         <i class="fa fa-table"></i> <span>Tables</span>
@@ -55,7 +54,7 @@
 
         <?php } ?>
       </ul>
-      <li class="treeview <?= ($nav == '7')?'active':'' ?>">
+      <li class="treeview <?= ($nav == '7')?($nav == '10')?'':'active':'active' ?>">
         <a href="#">
           <i class="fa fa-edit"></i><span> Report</span>
           <span class="pull-right-container">
@@ -64,6 +63,7 @@
         </a>
         <ul class="treeview-menu">
           <li class="<?= ($nav == '7')?'active':'' ?>"><a href="<?php echo base_url('admin/report/0') ?>"><i class="fa fa-circle-o"></i> Report Barang</a></li>
+          <li class="<?= ($nav == '10')?'active':'' ?>"><a href="<?php echo base_url('admin/report_claim') ?>"><i class="fa fa-circle-o"></i> Report Claim</a></li>
         </ul>
       </li>
     </li>
