@@ -35,7 +35,7 @@
 
             if(isset($report)){
                 foreach($report as $r){
-                    $customer         =$r->customer;
+                    $customer         =$r->id_customer;
                     $alamat           =$r->lokasi;
                     $tanggal          =$r->tanggal_keluar;
                     $id_transaksi     =$r->id_transaksi;
@@ -43,7 +43,7 @@
                     $tanggal_keluar   =$r->tanggal_keluar;
                     $kode_barang      =$r->kode_barang;
                     $nama_barang      =$r->nama_barang;
-                    $satuan           =$r->id_satuan;
+                    $satuan           =$r->satuan;
                     $jumlah           =$r->jumlah;
                 }
             }
@@ -65,6 +65,10 @@
                 <span>&nbsp;</span>
                 <table style='width:750px; font-size:8pt; font-family:calibri; border-collapse: collapse;' border = '0'>
                     <td width='70%' align='left' style='padding-right:80px; vertical-align:top'>
+                    <?php foreach ($list_customer as $s) { 
+                        $customer = $s->nama_customer;
+                    }
+                    ?>
                     Nama Customer &nbsp;&emsp; : <?= $customer ?><br>
                     Alamat &emsp;&emsp;&emsp;&emsp;&emsp; : <?= $alamat ?><br>
                     Tanggal &emsp;&emsp;&emsp;&emsp;&ensp;&ensp;: <?= $tanggal ?></br>

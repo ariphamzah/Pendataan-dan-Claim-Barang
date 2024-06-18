@@ -15,6 +15,7 @@ class Report extends CI_Controller{
       $where = array ('id_transaksi' => $id_transaksi);
 
       $data['report'] = $this->M_admin->get_data('tb_barang_keluar',$where);
+      $data['list_customer'] = $this->M_admin->select('tb_customer');
 
       $this->load->view('admin/invoice',$data);
     }
