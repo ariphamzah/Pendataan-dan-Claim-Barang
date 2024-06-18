@@ -31,21 +31,6 @@
       <div class="row">
         <div class="col-xs-12">
           <div class="box">
-
-            <!-- <?php if($this->session->flashdata('msg_berhasil')){ ?>
-              <div class="alert alert-success alert-dismissible" style="width:100%">
-                  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                  <strong>Success!</strong><br> <?php echo $this->session->flashdata('msg_berhasil');?>
-              </div>
-            <?php } ?>
-
-            <?php if($this->session->flashdata('msg_berhasil_keluar')){ ?>
-              <div class="alert alert-success alert-dismissible" style="width:100%">
-                  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                  <strong>Success!</strong><br> <?php echo $this->session->flashdata('msg_berhasil_keluar');?>
-              </div>
-            <?php } ?> -->
-
             <a href="" style="margin-bottom:10px;" name=""></a>
             <div class="nav-tabs-custom">
               <ul class="nav nav-tabs">
@@ -58,20 +43,6 @@
                 
                 <div class="tab-pane" id="barkel">
                   <form class="form-horizontal" action="<?= site_url('Admin/report/1') ?>" method="post">
-                    <?php if($this->session->flashdata('msg_berhasil')){ ?>
-                      <div class="alert alert-success alert-dismissible">
-                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                        <strong>Success</strong><br> <?php echo $this->session->flashdata('msg_berhasil');?>
-                      </div>
-                    <?php } ?>
-
-                    <?php if(validation_errors()){ ?>
-                      <div class="alert alert-warning alert-dismissible">
-                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                        <strong>Warning!</strong><br> <?php echo validation_errors(); ?>
-                      </div>
-                    <?php } ?>
-                    
                     <div class="col-sm-2" style=" position: relative ;min-height: 1px;padding-right: 15px;padding-left: 15px;margin-bottom: 20px;">
                       <select class="form-control" name="month" id="month" required>
                         <option value="">Month</option>
@@ -161,21 +132,7 @@
 
                 <!-- Report Barang Masuk -->
                 <div class="tab-pane active" id="barmas">
-                  <form class="form-horizontal" action="<?= site_url('Admin/report/2') ?>" method="post">
-                    <?php if($this->session->flashdata('msg_berhasil')){ ?>
-                      <div class="alert alert-success alert-dismissible">
-                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                        <strong>Success</strong><br> <?php echo $this->session->flashdata('msg_berhasil');?>
-                      </div>
-                    <?php } ?>
-
-                    <?php if(validation_errors()){ ?>
-                      <div class="alert alert-warning alert-dismissible">
-                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                        <strong>Warning!</strong><br> <?php echo validation_errors(); ?>
-                      </div>
-                    <?php } ?>
-                    
+                  <form class="form-horizontal" action="<?= site_url('Admin/report/2') ?>" method="post">                    
                     <div class="col-sm-2" style=" position: relative ;min-height: 1px;padding-right: 15px;padding-left: 15px;margin-bottom: 20px;">
                       <select class="form-control" name="month" id="month" required>
                         <option value="">Month</option>

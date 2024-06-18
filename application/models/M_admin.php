@@ -54,7 +54,6 @@ class M_admin extends CI_Model
   {
     $query = $this->db->select('*')
                       ->from($tabel)
-                      ->join('tb_customer', $tabel.'.satuan = tb_customer.id_customer')
                       ->where("MONTH(".$tang.")='".$month."' AND YEAR(".$tang.")='".$year."'")
                       ->get();
     return $query->result();

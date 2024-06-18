@@ -85,19 +85,19 @@
                       <input type="text" name="id_transaksi" style="width:60%;display:inline;" class="form-control responsive" readonly="readonly" value="<?= $id_transaksi ?>">
                     </div>
                     <div class="form-group">
-                      <label for="tanggal" style="margin-right:124px;">Tanggal</label>
+                      <label for="tanggal" style="margin-right:125px;">Tanggal</label>
                       <input type="date" name="tanggal" style="width:60%;display:inline;" class="form-control responsive" autocomplete="off" value="<?= $tanggal ?>">
                     </div>
                     <div class="form-group">
-                      <label for="lokasi" style="margin-right:132px;">Lokasi</label>
+                      <label for="lokasi" style="margin-right:134px;">Lokasi</label>
                       <input type="text" name="lokasi" style="width:60%;display:inline;" class="form-control responsive" id="lokasi" placeholder="Lokasi" value="<?= $lokasi ?>">
                     </div>
                     <div class="form-group">
-                      <label for="merk_barang" style="margin-right:94px;">Merk Barang</label>
+                      <label for="merk_barang" style="margin-right:96px;">Merk Barang</label>
                       <input type="text" name="merk_barang" style="width:60%;display:inline;" class="form-control responsive" id="merk_barang" placeholder="Merk Barang" value="<?= $merk ?>">
                     </div>
                     <div class="form-group">
-                      <label for="kode_barang" style="margin-right:33px;">Kode Barang / Barcode</label>
+                      <label for="kode_barang" style="margin-right:34px;">Kode Barang / Barcode</label>
                       <input type="text" name="kode_barang" style="width:60%;display:inline;" class="form-control responsive" id="kode_barang" placeholder="Kode Barang" value="<?= $kode_barang ?>">
                     </div>
                     <div class="form-group">
