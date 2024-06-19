@@ -29,7 +29,6 @@
             <div class="box-body box-profile">
               <img class="profile-user-img img-responsive img-circle" src="<?php echo base_url()?>assets/upload/user/img/<?=$this->session->userdata('photo')?>" alt="User profile picture">
               <h3 class="profile-username text-center"><?=$this->session->userdata('name')?></h3>
-              <p class="text-muted text-center">Software Engineer</p><br>
               <?php if($this->session->flashdata('msg_berhasil_gambar')){ ?>
                 <div class="alert alert-success alert-dismissible">
                   <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>

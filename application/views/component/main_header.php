@@ -25,7 +25,7 @@
           <li class="user-header">
             <img src="<?php echo base_url('assets/upload/user/img/' . $this->session->userdata('photo')) ?>" class="img-circle" alt="User Image">
             <p>
-              <?= $this->session->userdata('name') ?> - Web Developer
+              <?= $this->session->userdata('name') ?>
               <small>Last Login: <?= $this->session->userdata('last_login') ?></small>
             </p>
           </li>
