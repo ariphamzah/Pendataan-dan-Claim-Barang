@@ -984,17 +984,16 @@ class Admin extends CI_Controller{
     if($this->session->userdata('role') == 0){ 
       redirect (base_url('admin/tabel_barangmasuk'));
     }
-    
-    $this->form_validation->set_rules('kode_customer','Kode customer','trim|required|max_length[100]');
     $this->form_validation->set_rules('nama_customer','Nama customer','trim|required|max_length[100]');
+    $this->form_validation->set_rules('lokasi','Lokasi customer','trim|required|max_length[250]');
 
     if($this->form_validation->run() ==  TRUE)
     {
-      $kode_customer = $this->input->post('kode_customer' ,TRUE);
+      $lokasi = $this->input->post('lokasi' ,TRUE);
       $nama_customer = $this->input->post('nama_customer' ,TRUE);
 
       $data = array(
-            'kode_customer' => $kode_customer,
+            'lokasi'        => $lokasi,
             'nama_customer' => $nama_customer
       );
 
@@ -1026,13 +1025,13 @@ class Admin extends CI_Controller{
 
   public function proses_customer_update()
   {
-    $this->form_validation->set_rules('kode_customer','Kode customer','trim|required|max_length[100]');
     $this->form_validation->set_rules('nama_customer','Nama customer','trim|required|max_length[100]');
+    $this->form_validation->set_rules('lokasi','Lokasi customer','trim|required|max_length[250]');
 
     if($this->form_validation->run() ==  TRUE)
     {
       $id_customer   = $this->input->post('id_customer' ,TRUE);
-      $kode_customer = $this->input->post('kode_customer' ,TRUE);
+      $lokasi = $this->input->post('lokasi' ,TRUE);
       $nama_customer = $this->input->post('nama_customer' ,TRUE);
 
       $where = array(
@@ -1040,7 +1039,7 @@ class Admin extends CI_Controller{
       );
 
       $data = array(
-            'kode_customer' => $kode_customer,
+            'lokasi' => $lokasi,
             'nama_customer' => $nama_customer
       );
 
@@ -1098,13 +1097,13 @@ class Admin extends CI_Controller{
   public function proses_data_keluar()
   {
     $this->form_validation->set_rules('tanggal_keluar','Tanggal Keluar','trim|required');
+    $this->form_validation->set_rules('customer','Nama Customer','required');
     if($this->form_validation->run() === TRUE)
     {
       $id_transaksi   = $this->input->post('id_transaksi',TRUE);
       $customer       = $this->input->post('customer',TRUE);
       $tanggal_masuk  = $this->input->post('tanggal',TRUE);
       $tanggal_keluar = $this->input->post('tanggal_keluar',TRUE);
-      $lokasi         = $this->input->post('lokasi',TRUE);
       $merk           = $this->input->post('merk_barang',TRUE);
       $kode_barang    = $this->input->post('kode_barang',TRUE);
       $nama_barang    = $this->input->post('nama_barang',TRUE);
@@ -1117,7 +1116,6 @@ class Admin extends CI_Controller{
               'id_customer'     => $customer,
               'tanggal_masuk'   => $tanggal_masuk,
               'tanggal_keluar'  => $tanggal_keluar,
-              'lokasi'          => $lokasi,
               'merk'            => $merk,
               'kode_barang'     => $kode_barang,
               'nama_barang'     => $nama_barang,
@@ -1137,13 +1135,14 @@ class Admin extends CI_Controller{
         $this->session->set_flashdata('msg_berhasil_keluar','Data Berhasil Keluar');
         redirect(base_url('admin/tabel_barangmasuk'));
     }else {
-      $data['nav'] = 2;
+      $data['list_data'] = $this->M_admin->select('tb_barang_masuk');
+      $data['nav'] = 1;
 
       // Load View
       $this->load->view('component/header');
       $data['main_header'] = $this->load->view('component/main_header', $data, TRUE);
       $data['sidebar'] = $this->load->view('component/sidebar', NULL, TRUE);
-      $this->load->view('form/form_pindahbarang/'.$id_transaksi);
+      $this->load->view('admin/tabel/tabel_barangmasuk',$data);
       $this->load->view('component/footer');
     }
 

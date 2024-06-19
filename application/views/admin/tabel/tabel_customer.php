@@ -45,8 +45,8 @@
                 <thead>
                 <tr>
                   <th>No</th>
-                  <th>Kode Customer</th>
                   <th>Nama Customer</th>
+                  <th>Lokasi Customer</th>
                   <th>Update</th>
                   <th>Delete</th>
                 </tr>
@@ -57,8 +57,8 @@
                   <?php $no = 1;?>
                   <?php foreach($list_data as $dd): ?>
                     <td><?=$no?></td>
-                    <td><?=$dd->kode_customer?></td>
                     <td><?=$dd->nama_customer?></td>
+                    <td><?=$dd->lokasi?></td>
                     <td><a type="button" class="btn btn-info"  href="<?=base_url('admin/edit_customer/'.$dd->id_customer)?>" name="btn_update" style="margin:auto;"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
                     <td><a type="button" class="btn btn-danger btn-delete"  href="<?=base_url('admin/delete_customer/'.$dd->id_customer)?>" name="btn_delete" style="margin:auto;"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
                 </tr>

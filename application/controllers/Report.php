@@ -14,6 +14,7 @@ class Report extends CI_Controller{
     if($id_transaksi != ''){
       $where = array ('id_transaksi' => $id_transaksi);
 
+      $data['list_data'] = $this->M_admin->select('tb_barang_keluar');
       $data['report'] = $this->M_admin->get_data('tb_barang_keluar',$where);
       $data['list_customer'] = $this->M_admin->select('tb_customer');
 

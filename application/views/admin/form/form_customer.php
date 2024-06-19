@@ -1,15 +1,15 @@
 <?php
 	$id_customer = '';
-	$kode_customer = '';
 	$nama_customer = '';
+	$lokasi = '';
   $flag = 0;
   $link = base_url('admin/proses_customer_insert');
 
 	if(isset($data_customer)){
 		foreach($data_customer as $d){
       $id_customer=$d->id_customer;
-      $kode_customer=$d->kode_customer;
       $nama_customer=$d->nama_customer;
+      $lokasi=$d->lokasi;
       $flag = 1;
       $link=base_url('admin/proses_customer_update');
     }
@@ -67,13 +67,13 @@
 
                   <div class="box-body">
                     <div class="form-group">
-                      <input type="hidden" name="id_customer" value="<?= $id_customer ?>">
-                      <label for="kode_customer" style="margin-right:124px;">Kode Customer</label>
-                      <input type="text" name="kode_customer" style="width:60%;display:inline;" class="form-control responsive" id="kode_customer" value="<?= $kode_customer ?>" placeholder="Kode Customer">
-                    </div>
-                    <div class="form-group">
                       <label for="nama_customer" style="margin-right:120px;">Nama Customer</label>
                       <input type="text" name="nama_customer" style="width:60%;display:inline;" class="form-control responsive" id="nama_customer" value="<?= $nama_customer ?>" placeholder="Nama Customer">
+                    </div>
+                    <div class="form-group">
+                      <input type="hidden" name="id_customer" value="<?= $id_customer ?>">
+                      <label for="lokasi" style="margin-right:118px;">Lokasi Customer</label>
+                      <input type="text" name="lokasi" style="width:60%;display:inline;" class="form-control responsive" id="lokasi" value="<?= $lokasi ?>" placeholder="Lokasi Customer">
                     </div>
                     <center>
                     <div class="form-group" style=" margin-top:50px; margin-bottom:50px;">

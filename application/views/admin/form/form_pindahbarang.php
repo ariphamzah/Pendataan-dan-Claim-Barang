@@ -65,10 +65,6 @@
                       <input type="date" name="tanggal_keluar" style="width:60%;display:inline;" class="form-control responsive" required="" placeholder="Klik Disini">
                     </div>
                     <div class="form-group">
-                      <label for="lokasi" style="margin-right:132px;">Lokasi</label>
-                      <input type="text" name="lokasi" style="width:60%;display:inline;" class="form-control responsive" >
-                    </div>
-                    <div class="form-group">
                       <label for="merk_barang" style="margin-right:94px;">Merk Barang</label>
                       <input type="text" name="merk_barang" readonly="readonly" style="width:60%;display:inline;" class="form-control responsive" id="merk_barang" value="<?=$d->merk?>">
                     </div>
