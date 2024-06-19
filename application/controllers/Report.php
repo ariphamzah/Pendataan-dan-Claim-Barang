@@ -9,7 +9,8 @@ class Report extends CI_Controller{
 	}
   public function invoice()
   {
-    $id_transaksi = $this->uri->segment(3);
+    if($this->session->userdata('status') == 'login'){
+      $id_transaksi = $this->uri->segment(3);
 
     if($id_transaksi != ''){
       $where = array ('id_transaksi' => $id_transaksi);
@@ -22,6 +23,9 @@ class Report extends CI_Controller{
     }
     else{
       $this->load->view('admin/invoice');
+    }
+    }else {
+      $this->load->view('login/login');
     }    
   }
-}
+}     
