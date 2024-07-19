@@ -126,7 +126,7 @@
                     <!-- /.box-body -->
                     <div class="box-footer" style="width: 90%;">
                       <a type="button" class="btn btn-default" style="margin-right:1px; responsive" onclick="history.back(-1)" name="btn_kembali"><i class="fa fa-arrow-left" aria-hidden="true"></i> Kembali</a>
-                      <a type="button" class="btn btn-info" style="margin-right:29% display:inline; responsive" href="<?= base_url('admin/tabel_claimbarang') ?>" name="btn_listbarang"><i class="fa fa-table" aria-hidden="true"></i> Lihat List Barang</a>
+                      <a type="button" class="btn btn-info" style="margin-right:29% display:inline; responsive" href="<?= base_url('admin/tabel_barangmasuk') ?>" name="btn_listbarang"><i class="fa fa-table" aria-hidden="true"></i> Lihat List Barang</a>
                     </div>
                   <!-- </div> -->
                 </form>
