@@ -19,6 +19,10 @@
         </span>
       </a>
     </li>
+    <li class="<?= ($nav == '11')?'active':'' ?>">
+      <a href="<?php echo base_url('admin/stock_op_name') ?>">
+        <i class="fa fa-dashboard" aria-hidden="true"></i> <span>Stock Op Name</span></a>
+    </li>
 
     <li class="treeview <?= ($nav != '0')?($nav != '9')?($nav != '4')?'':'active':'active':'active' ?>" href="<?= site_url('Welcome') ?>">
       <a href="#">
@@ -54,7 +58,7 @@
 
         <?php } ?>
       </ul>
-      <li class="treeview <?= ($nav == '7')?($nav == '10')?'':'active':'active' ?>">
+      <li class="treeview <?= ($nav != '7')?($nav != '10')?'':'active':'active' ?>">
         <a href="#">
           <i class="fa fa-edit"></i><span> Report</span>
           <span class="pull-right-container">

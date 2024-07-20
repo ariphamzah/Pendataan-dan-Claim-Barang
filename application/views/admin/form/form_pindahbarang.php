@@ -1,3 +1,6 @@
+<?php
+  $id_transaksi = $id_barang;
+?>
 <div class="wrapper">
 
   <header class="main-header">
@@ -45,7 +48,7 @@
                     <div class="form-group">
                       <?php foreach($list_data as $d){ ?>
                       <label for="id_transaksi" style="margin-right:97px;">ID Transaksi</label>
-                      <input type="text" name="id_transaksi" style="width:60%;display:inline;" class="form-control responsive" readonly="readonly" value="<?=$d->id_transaksi?>">
+                      <input type="text" name="id_transaksi" style="width:60%;display:inline;" class="form-control responsive" readonly="readonly" value="<?=$id_transaksi?>">
                     </div>
                     <div class="form-group">
                       <label for="customer" style="margin-right:74px;">Nama Customer</label>

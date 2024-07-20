@@ -1,5 +1,5 @@
 <?php
-	$id_transaksi = 'WG-'.date("Y").random_string('numeric', 8);
+  $id_transaksi = $id_barang;
 	$tanggal = '';
 	$lokasi = '';
 	$merk = '';

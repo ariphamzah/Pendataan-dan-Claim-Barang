@@ -550,6 +550,31 @@ class Admin extends CI_Controller{
   ####################################
 
 
+  ####################################
+        // STOK OP NAME 
+  ####################################
+
+  public function stock_op_name()
+  {
+    if($this->session->userdata('status') == 'login'){
+        $data['list_data'] = $this->M_admin->select_grouped_stock_op_name();
+        $data['nav'] = 11;
+
+        // Load View
+        $this->load->view('component/header');
+        $data['main_header'] = $this->load->view('component/main_header', $data, TRUE);
+        $data['sidebar'] = $this->load->view('component/sidebar', NULL, TRUE);
+        $this->load->view('admin/tabel/tabel_stockopname', $data);
+        $this->load->view('component/footer');
+    } else {
+        $this->load->view('login/login');
+    }
+  }
+
+  ####################################
+        // END - STOK OP NAME 
+  ####################################
+
 
   ####################################
         // DATA BARANG MASUK
@@ -562,6 +587,8 @@ class Admin extends CI_Controller{
         redirect (base_url('admin/tabel_barangmasuk'));
       }
       $data['nav'] = 0;
+      $id_barang= $this->M_admin->generate_kode_barang('OBOR-BM');
+      $data['id_barang'] = $id_barang;
       
       // Load View
       $this->load->view('component/header');
@@ -641,11 +668,12 @@ class Admin extends CI_Controller{
 
   public function proses_databarang_masuk_insert()
   {
+
     if($this->session->userdata('status') == 'login'){
       $this->form_validation->set_rules('lokasi','Lokasi','required');
-    $this->form_validation->set_rules('tanggal','Tanggal','required');
-    $this->form_validation->set_rules('nama_barang','Nama Barang','required');
-    $this->form_validation->set_rules('jumlah','Jumlah','required');
+      $this->form_validation->set_rules('tanggal','Tanggal','required');
+      $this->form_validation->set_rules('nama_barang','Nama Barang','required');
+      $this->form_validation->set_rules('jumlah','Jumlah','required');
 
     if($this->form_validation->run() == TRUE)
     {
@@ -755,6 +783,7 @@ class Admin extends CI_Controller{
   ####################################
       // END DATA BARANG MASUK
   ####################################
+  
 
   ####################################
             // CLAIM BARANG
@@ -1206,6 +1235,11 @@ class Admin extends CI_Controller{
       $uri = $this->uri->segment(3);
       $where = array( 'id_transaksi' => $uri);
       $data['list_data'] = $this->M_admin->get_data('tb_barang_masuk',$where);
+
+      // ID Transaksi
+      $id_barang= $this->M_admin->generate_kode_barang_keluar('OBOR-BK');
+      $data['id_barang'] = $id_barang;
+
       $data['list_customer'] = $this->M_admin->select('tb_customer');
       $data['nav'] = 2;
 
@@ -1227,6 +1261,7 @@ class Admin extends CI_Controller{
     $this->form_validation->set_rules('customer','Nama Customer','required');
     if($this->form_validation->run() === TRUE)
     {
+      // Generate ID Transaksi
       $id_transaksi   = $this->input->post('id_transaksi',TRUE);
       $customer       = $this->input->post('customer',TRUE);
       $tanggal_masuk  = $this->input->post('tanggal',TRUE);
