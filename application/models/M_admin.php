@@ -21,7 +21,7 @@ class M_admin extends CI_Model
     
     if ($data) {
         $kodeBarang = $data->max_kode;
-        $no = substr($kodeBarang, 7);
+        $no = substr($kodeBarang, 11);
         $no = (int) $no;
         $no += 1;
     } else {
@@ -45,7 +45,31 @@ class M_admin extends CI_Model
     
     if ($data) {
         $kodeBarang = $data->max_kode;
-        $no = substr($kodeBarang, 7);
+        $no = substr($kodeBarang, 11);
+        $no = (int) $no;
+        $no += 1;
+    } else {
+        $no = 1;
+    }
+    
+    $newKodeBarang = $char .date("Y"). $no;
+    return $newKodeBarang;
+  }
+
+  public function generate_kode_claim($char_bm)
+  {
+    $char = $char_bm;
+    $query = $this->db->select('MAX(id_claim) as max_kode')
+                      ->from('tb_claim_barang')
+                      ->where('id_claim LIKE', $char.'%')
+                      ->order_by('id_claim', 'DESC')
+                      ->limit(1)
+                      ->get();
+    $data = $query->row();
+    
+    if ($data) {
+        $kodeBarang = $data->max_kode;
+        $no = substr($kodeBarang, 12);
         $no = (int) $no;
         $no += 1;
     } else {

@@ -1,5 +1,5 @@
 <?php
-	$id_claim = 'CLM-'.date("Y").random_string('numeric', 8);
+	$id_claim = $id_claim;
 	$tanggal = '';
 	$customer = '';
 	$mekanik = '';

@@ -460,96 +460,6 @@ class Admin extends CI_Controller{
   ####################################
 
 
-
-  ####################################
-        // Report
-  ####################################
-
-  public function report($id)
-  {
-    if($this->session->userdata('status') == 'login'){
-      $data['nav'] = 7;
-      $month = $this->input->post('month');
-      $year = $this->input->post('year');
-      
-      $data['month'] = $month;
-      $data['year'] = $year;
-
-      // If user click submit
-      if($id == 1){
-
-        $data['barkel'] = $this->M_admin->get_data_report('tb_barang_keluar',$month,$year,'tanggal_keluar');
-
-        $data['flag'] = 2;
-
-      }else if($id == 2){
-
-        $data['barmas'] = $this->M_admin->get_data_report_masuk('tb_barang_masuk',$month,$year,'tanggal');
-
-        $data['flag'] = 1;
-
-      }else if($id == 3){
-
-          $data['clabar'] = $this->M_admin->get_data_report('tb_claim_barang',$month,$year,'tanggal');
-    
-          $data['flag'] = 3;
-
-      }else{
-        $data['flag'] = 0;
-      }
-
-      // Load View
-      $this->load->view('component/header');
-      $data['main_header'] = $this->load->view('component/main_header', $data, TRUE);
-      $data['sidebar'] = $this->load->view('component/sidebar', NULL, TRUE);
-      $this->load->view('admin/tabel/report',$data);
-      $this->load->view('component/footer');
-      
-    }else {
-      $this->load->view('login/login');
-    }
-  }
-
-  public function report_claim()
-  {
-    if($this->session->userdata('status') == 'login'){
-      $data['list_data'] = $this->M_admin->read_join('tb_report_claim');
-      $data['nav'] = 10;
-
-      // Load View
-      $this->load->view('component/header');
-      $data['main_header'] = $this->load->view('component/main_header', $data, TRUE);
-      $data['sidebar'] = $this->load->view('component/sidebar', NULL, TRUE);
-      $this->load->view('admin/tabel/tabel_reportclaim',$data);
-      $this->load->view('component/footer');
-    }else {
-      $this->load->view('login/login');
-    } 
-  }
-
-  public function report_kegiatan()
-  {
-    if($this->session->userdata('status') == 'login'){
-      $data['list_data'] = $this->M_admin->select('tb_report');
-      $data['nav'] = 10;
-
-      // Load View
-      $this->load->view('component/header');
-      $data['main_header'] = $this->load->view('component/main_header', $data, TRUE);
-      $data['sidebar'] = $this->load->view('component/sidebar', NULL, TRUE);
-      $this->load->view('admin/report_kegiatan',$data);
-      $this->load->view('component/footer');
-    }else {
-      $this->load->view('login/login');
-    } 
-    
-  }
-
-  ####################################
-           // End Report
-  ####################################
-
-
   ####################################
         // STOK OP NAME 
   ####################################
@@ -610,6 +520,7 @@ class Admin extends CI_Controller{
   
       $where = array('id_transaksi' => $id_transaksi);
       $data['masuk'] = $this->M_admin->get_data('tb_barang_masuk',$where);
+      $data['id_barang'] = $id_transaksi;
       $data['nav'] = 0;
       
       // Load View
@@ -711,6 +622,8 @@ class Admin extends CI_Controller{
       redirect(base_url('admin/tabel_barangmasuk'));
     }else {
       $data['nav'] = 0;
+      $id_barang= $this->M_admin->generate_kode_barang('OBOR-BM');
+      $data['id_barang'] = $id_barang;
 
       // Load View
       $this->load->view('component/header');
@@ -728,8 +641,8 @@ class Admin extends CI_Controller{
   {
     if($this->session->userdata('status') == 'login'){
       $this->form_validation->set_rules('lokasi','Lokasi','required');
-    $this->form_validation->set_rules('nama_barang','Nama Barang','required');
-    $this->form_validation->set_rules('jumlah','Jumlah','required');
+      $this->form_validation->set_rules('nama_barang','Nama Barang','required');
+      $this->form_validation->set_rules('jumlah','Jumlah','required');
 
     if($this->form_validation->run() == TRUE)
     {
@@ -767,13 +680,14 @@ class Admin extends CI_Controller{
       $this->session->set_flashdata('msg_berhasil','Data Barang Berhasil Diupdate');
       redirect(base_url('admin/tabel_barangmasuk'));
     }else{
-      $data['nav'] = 0;
+      $data['list_data'] = $this->M_admin->select('tb_barang_masuk');
+      $data['nav'] = 1;
       
       // Load View
       $this->load->view('component/header');
       $data['main_header'] = $this->load->view('component/main_header', $data, TRUE);
       $data['sidebar'] = $this->load->view('component/sidebar', NULL, TRUE);
-      $this->load->view('admin/form/form_barangmasuk', $data);
+      $this->load->view('admin/tabel/tabel_barangmasuk', $data);
       $this->load->view('component/footer'); 
     }
     }else {
@@ -784,6 +698,124 @@ class Admin extends CI_Controller{
       // END DATA BARANG MASUK
   ####################################
   
+
+  ####################################
+     // DATA MASUK KE DATA KELUAR
+  ####################################
+
+  public function barang_keluar()
+  {
+    if($this->session->userdata('status') == 'login'){
+      $uri = $this->uri->segment(3);
+      $where = array( 'id_transaksi' => $uri);
+      $data['list_data'] = $this->M_admin->get_data('tb_barang_masuk',$where);
+
+      // ID Transaksi
+      $id_barang= $this->M_admin->generate_kode_barang_keluar('OBOR-BK');
+      $data['id_barang'] = $id_barang;
+
+      $data['list_customer'] = $this->M_admin->select('tb_customer');
+      $data['nav'] = 2;
+
+      // Load View
+      $this->load->view('component/header');
+      $data['main_header'] = $this->load->view('component/main_header', $data, TRUE);
+      $data['sidebar'] = $this->load->view('component/sidebar', NULL, TRUE);
+      $this->load->view('admin/form/form_pindahbarang',$data);
+      $this->load->view('component/footer');
+    }else {
+      $this->load->view('login/login');
+    }
+  }
+
+  public function proses_data_keluar()
+  {
+    if($this->session->userdata('status') == 'login'){
+      $this->form_validation->set_rules('tanggal_keluar','Tanggal Keluar','trim|required');
+      $this->form_validation->set_rules('customer','Nama Customer','required');
+    if($this->form_validation->run() === TRUE)
+    {
+      // Generate ID Transaksi
+      $id_transaksi   = $this->input->post('id_transaksi',TRUE);
+      $customer       = $this->input->post('customer',TRUE);
+      $tanggal_masuk  = $this->input->post('tanggal',TRUE);
+      $tanggal_keluar = $this->input->post('tanggal_keluar',TRUE);
+      $merk           = $this->input->post('merk_barang',TRUE);
+      $kode_barang    = $this->input->post('kode_barang',TRUE);
+      $nama_barang    = $this->input->post('nama_barang',TRUE);
+      $satuan         = $this->input->post('satuan',TRUE);
+      $jumlah         = $this->input->post('jumlah',TRUE);
+
+      $where = array( 'id_transaksi' => $id_transaksi);
+      $data = array(
+              'id_transaksi'    => $id_transaksi,
+              'id_customer'     => $customer,
+              'tanggal_masuk'   => $tanggal_masuk,
+              'tanggal_keluar'  => $tanggal_keluar,
+              'merk'            => $merk,
+              'kode_barang'     => $kode_barang,
+              'nama_barang'     => $nama_barang,
+              'satuan'          => $satuan,
+              'jumlah'          => $jumlah
+      );
+
+      $data_report = array(
+        'id_report'        => 'RP-'.date("Y").random_string('numeric', 8),
+        'user_report'      => $this->session->userdata('name'),
+        'jenis_report'     => 'report_barang',
+        'note'             => 'Sale Barang '.$id_transaksi. ' (' .$nama_barang. ')'
+      );
+      
+        $this->M_admin->insert('tb_report',$data_report);
+        $this->M_admin->insert('tb_barang_keluar',$data);
+        $this->session->set_flashdata('msg_berhasil_keluar','Data Berhasil Keluar');
+        redirect(base_url('admin/tabel_barangmasuk'));
+    }else {
+      $data['list_data'] = $this->M_admin->select('tb_barang_masuk');
+      $data['nav'] = 1;
+
+      // Load View
+      $this->load->view('component/header');
+      $data['main_header'] = $this->load->view('component/main_header', $data, TRUE);
+      $data['sidebar'] = $this->load->view('component/sidebar', NULL, TRUE);
+      $this->load->view('admin/tabel/tabel_barangmasuk',$data);
+      $this->load->view('component/footer');
+    }
+    }else {
+      $this->load->view('login/login');
+    } 
+  }
+  ####################################
+    // END DATA MASUK KE DATA KELUAR
+  ####################################
+
+
+  ####################################
+        // DATA BARANG KELUAR
+  ####################################
+
+  public function tabel_barangkeluar()
+  {
+    if($this->session->userdata('status') == 'login'){
+      $data['list_data'] = $this->M_admin->read_join('tb_barang_keluar');
+      $data['nav'] = 2;
+
+      // Load View
+      $this->load->view('component/header');
+      $data['main_header'] = $this->load->view('component/main_header', $data, TRUE);
+      $data['sidebar'] = $this->load->view('component/sidebar', NULL, TRUE);
+      $this->load->view('admin/tabel/tabel_barangkeluar',$data);
+      $this->load->view('component/footer');
+    }else {
+      $this->load->view('login/login');
+    } 
+  }
+
+  
+  ####################################
+           // End Barang Keluar
+  ####################################
+
 
   ####################################
             // CLAIM BARANG
@@ -811,6 +843,8 @@ class Admin extends CI_Controller{
     if($this->session->userdata('status') == 'login'){
       $data['list_data'] = $this->M_admin->select('tb_claim_barang');
       $data['list_customer'] = $this->M_admin->select('tb_customer');
+      $id_claim= $this->M_admin->generate_kode_claim('OBOR-CLM');
+      $data['id_claim'] = $id_claim;
       $data['nav'] = 9;
       
       // Load View
@@ -835,6 +869,7 @@ class Admin extends CI_Controller{
       $data['list_data'] = $this->M_admin->select('tb_claim_barang');
       $data['masuk'] = $this->M_admin->get_data('tb_claim_barang',$where);
       $data['list_customer'] = $this->M_admin->select('tb_customer');
+      $data['id_claim'] = $id_claim;
       $data['nav'] = 9;
       
       // Load View
@@ -912,6 +947,8 @@ class Admin extends CI_Controller{
     }else{
       $data['nav'] = 9;
       $data['list_customer'] = $this->M_admin->select('tb_customer');
+      $id_claim= $this->M_admin->generate_kode_claim('OBOR-CLM');
+      $data['id_claim'] = $id_claim;
     
       // Load View
       $this->load->view('component/header');
@@ -930,11 +967,11 @@ class Admin extends CI_Controller{
   {
     if($this->session->userdata('status') == 'login'){
       $this->form_validation->set_rules('tanggal','Tanggal','required');
-    $this->form_validation->set_rules('customer','Nama Customer','required');
-    $this->form_validation->set_rules('mekanik','Mekanik','required');
-    $this->form_validation->set_rules('merk_mesin','Merk Mesin','required');
-    $this->form_validation->set_rules('nama_part','Nama Part','required');
-    $this->form_validation->set_rules('nomor_mesin','Nomer Mesin','required');
+      $this->form_validation->set_rules('customer','Nama Customer','required');
+      $this->form_validation->set_rules('mekanik','Mekanik','required');
+      $this->form_validation->set_rules('merk_mesin','Merk Mesin','required');
+      $this->form_validation->set_rules('nama_part','Nama Part','required');
+      $this->form_validation->set_rules('nomor_mesin','Nomer Mesin','required');
     
     if($this->form_validation->run() == TRUE)
     {
@@ -945,7 +982,8 @@ class Admin extends CI_Controller{
       $merk_mesin               = $this->input->post('merk_mesin',TRUE);
       $type_mesin               = $this->input->post('type_mesin',TRUE);
       $nomor_mesin              = $this->input->post('nomor_mesin',TRUE);
-      $nama_part                = $this->input->post('nama_part',TRUE);
+      $nama_part                = $this->input->post('nama_part',TRUE);      
+      $jumlah                   = $this->input->post('jumlah',TRUE);
       $penyebab_kerusakan       = $this->input->post('penyebab_kerusakan',TRUE);
       $status                   = $this->input->post('status',TRUE);
       $keterangan               = $this->input->post('keterangan',TRUE);
@@ -969,7 +1007,8 @@ class Admin extends CI_Controller{
           'merk_mesin'            => $merk_mesin,
           'type_mesin'            => $type_mesin,
           'nomor_mesin'           => $nomor_mesin,
-          'nama_part'             => $nama_part,
+          'nama_part'             => $nama_part,          
+          'jumlah'                => $jumlah,
           'penyebab_kerusakan'    => $penyebab_kerusakan,
           'status'                => $status,
           'keterangan'            => $keterangan
@@ -993,7 +1032,8 @@ class Admin extends CI_Controller{
               'merk_mesin'            => $merk_mesin,
               'type_mesin'            => $type_mesin,
               'nomor_mesin'           => $nomor_mesin,
-              'nama_part'             => $nama_part,
+              'nama_part'             => $nama_part,              
+              'jumlah'                => $jumlah,
               'penyebab_kerusakan'    => $penyebab_kerusakan,
               'status'                => $status,
               'keterangan'            => $keterangan
@@ -1013,15 +1053,15 @@ class Admin extends CI_Controller{
       redirect(base_url('admin/tabel_claimbarang'));
       }
     }else{
-      $data['nav'] = 9;
-      $data['list_customer'] = $this->M_admin->select('tb_customer');
-    
+      $data['list_data'] = $this->M_admin->read_join('tb_claim_barang');
+      $data['nav'] = 8;
+
       // Load View
       $this->load->view('component/header');
       $data['main_header'] = $this->load->view('component/main_header', $data, TRUE);
       $data['sidebar'] = $this->load->view('component/sidebar', NULL, TRUE);
-      $this->load->view('admin/form/form_claimbarang', $data);
-      $this->load->view('component/footer');  
+      $this->load->view('admin/tabel/tabel_claimbarang',$data);
+      $this->load->view('component/footer');
     }
     }else {
       $this->load->view('login/login');
@@ -1221,123 +1261,96 @@ class Admin extends CI_Controller{
   }
 
   ####################################
-            // END SATUAN
+            // END Costumer
   ####################################
 
 
   ####################################
-     // DATA MASUK KE DATA KELUAR
+        // Report
   ####################################
 
-  public function barang_keluar()
+  public function report($id)
   {
     if($this->session->userdata('status') == 'login'){
-      $uri = $this->uri->segment(3);
-      $where = array( 'id_transaksi' => $uri);
-      $data['list_data'] = $this->M_admin->get_data('tb_barang_masuk',$where);
-
-      // ID Transaksi
-      $id_barang= $this->M_admin->generate_kode_barang_keluar('OBOR-BK');
-      $data['id_barang'] = $id_barang;
-
-      $data['list_customer'] = $this->M_admin->select('tb_customer');
-      $data['nav'] = 2;
-
-      // Load View
-      $this->load->view('component/header');
-      $data['main_header'] = $this->load->view('component/main_header', $data, TRUE);
-      $data['sidebar'] = $this->load->view('component/sidebar', NULL, TRUE);
-      $this->load->view('admin/form/form_pindahbarang',$data);
-      $this->load->view('component/footer');
-    }else {
-      $this->load->view('login/login');
-    }
-  }
-
-  public function proses_data_keluar()
-  {
-    if($this->session->userdata('status') == 'login'){
-      $this->form_validation->set_rules('tanggal_keluar','Tanggal Keluar','trim|required');
-    $this->form_validation->set_rules('customer','Nama Customer','required');
-    if($this->form_validation->run() === TRUE)
-    {
-      // Generate ID Transaksi
-      $id_transaksi   = $this->input->post('id_transaksi',TRUE);
-      $customer       = $this->input->post('customer',TRUE);
-      $tanggal_masuk  = $this->input->post('tanggal',TRUE);
-      $tanggal_keluar = $this->input->post('tanggal_keluar',TRUE);
-      $merk           = $this->input->post('merk_barang',TRUE);
-      $kode_barang    = $this->input->post('kode_barang',TRUE);
-      $nama_barang    = $this->input->post('nama_barang',TRUE);
-      $satuan         = $this->input->post('satuan',TRUE);
-      $jumlah         = $this->input->post('jumlah',TRUE);
-
-      $where = array( 'id_transaksi' => $id_transaksi);
-      $data = array(
-              'id_transaksi'    => $id_transaksi,
-              'id_customer'     => $customer,
-              'tanggal_masuk'   => $tanggal_masuk,
-              'tanggal_keluar'  => $tanggal_keluar,
-              'merk'            => $merk,
-              'kode_barang'     => $kode_barang,
-              'nama_barang'     => $nama_barang,
-              'satuan'          => $satuan,
-              'jumlah'          => $jumlah
-      );
-
-      $data_report = array(
-        'id_report'        => 'RP-'.date("Y").random_string('numeric', 8),
-        'user_report'      => $this->session->userdata('name'),
-        'jenis_report'     => 'report_barang',
-        'note'             => 'Sale Barang '.$id_transaksi. ' (' .$nama_barang. ')'
-      );
+      $data['nav'] = 7;
+      $month = $this->input->post('month');
+      $year = $this->input->post('year');
       
-        $this->M_admin->insert('tb_report',$data_report);
-        $this->M_admin->insert('tb_barang_keluar',$data);
-        $this->session->set_flashdata('msg_berhasil_keluar','Data Berhasil Keluar');
-        redirect(base_url('admin/tabel_barangmasuk'));
-    }else {
-      $data['list_data'] = $this->M_admin->select('tb_barang_masuk');
-      $data['nav'] = 1;
+      $data['month'] = $month;
+      $data['year'] = $year;
+
+      // If user click submit
+      if($id == 1){
+
+        $data['barkel'] = $this->M_admin->get_data_report('tb_barang_keluar',$month,$year,'tanggal_keluar');
+
+        $data['flag'] = 2;
+
+      }else if($id == 2){
+
+        $data['barmas'] = $this->M_admin->get_data_report_masuk('tb_barang_masuk',$month,$year,'tanggal');
+
+        $data['flag'] = 1;
+
+      }else if($id == 3){
+
+          $data['clabar'] = $this->M_admin->get_data_report('tb_claim_barang',$month,$year,'tanggal');
+    
+          $data['flag'] = 3;
+
+      }else{
+        $data['flag'] = 0;
+      }
 
       // Load View
       $this->load->view('component/header');
       $data['main_header'] = $this->load->view('component/main_header', $data, TRUE);
       $data['sidebar'] = $this->load->view('component/sidebar', NULL, TRUE);
-      $this->load->view('admin/tabel/tabel_barangmasuk',$data);
+      $this->load->view('admin/tabel/report',$data);
       $this->load->view('component/footer');
-    }
+      
     }else {
       $this->load->view('login/login');
-    } 
+    }
   }
-  ####################################
-    // END DATA MASUK KE DATA KELUAR
-  ####################################
 
-
-  ####################################
-        // DATA BARANG KELUAR
-  ####################################
-
-  public function tabel_barangkeluar()
+  public function report_claim()
   {
     if($this->session->userdata('status') == 'login'){
-      $data['list_data'] = $this->M_admin->read_join('tb_barang_keluar');
-      $data['nav'] = 2;
+      $data['list_data'] = $this->M_admin->read_join('tb_report_claim');
+      $data['nav'] = 10;
 
       // Load View
       $this->load->view('component/header');
       $data['main_header'] = $this->load->view('component/main_header', $data, TRUE);
       $data['sidebar'] = $this->load->view('component/sidebar', NULL, TRUE);
-      $this->load->view('admin/tabel/tabel_barangkeluar',$data);
+      $this->load->view('admin/tabel/tabel_reportclaim',$data);
       $this->load->view('component/footer');
     }else {
       $this->load->view('login/login');
     } 
   }
 
-  
+  public function report_kegiatan()
+  {
+    if($this->session->userdata('status') == 'login'){
+      $data['list_data'] = $this->M_admin->select('tb_report');
+      $data['nav'] = 10;
 
+      // Load View
+      $this->load->view('component/header');
+      $data['main_header'] = $this->load->view('component/main_header', $data, TRUE);
+      $data['sidebar'] = $this->load->view('component/sidebar', NULL, TRUE);
+      $this->load->view('admin/report_kegiatan',$data);
+      $this->load->view('component/footer');
+    }else {
+      $this->load->view('login/login');
+    } 
+    
+  }
+
+  ####################################
+           // End Report
+  ####################################
 }
 ?>
