@@ -33,7 +33,7 @@
             <div class="box-body">
 
               <div class="table-responsive">
-              <table id="example1" class="table table-bordered table-striped">
+              <table id="example1" class="table table-bordered">
                 <thead>
                 <tr>
                   <th>No</th>
@@ -43,11 +43,12 @@
                   <th>Jumlah</th>
                 </tr>
                 </thead>
-                <tbody>
+                <?php if(!empty($list_data)){ ?>
+                <?php $no = 1;?>
+                <?php foreach($list_data as $dd): ?>
+                <?php $warna = $dd->jumlah < 5 ? 'bg-red' : ''; ?>
+                <tbody class="<?php echo $warna; ?>">
                 <tr>
-                  <?php if(!empty($list_data)){ ?>
-                  <?php $no = 1;?>
-                  <?php foreach($list_data as $dd): ?>
                     <td><?=$no?></td>
                     <td><?=$dd->nama_barang?></td>
                     <td><?=$dd->merk?></td>

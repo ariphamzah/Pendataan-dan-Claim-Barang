@@ -294,7 +294,7 @@ class Admin extends CI_Controller{
       
       $this->M_admin->insert('tb_report',$data_report);
   
-      $this->session->set_flashdata('msg_berhasil','User Behasil Di Delete');
+      $this->session->set_flashdata('msg_berhasil','Data User Behasil Dihapus');
       redirect(base_url('admin/users'));
     }else {
       $this->load->view('login/login');
@@ -569,6 +569,7 @@ class Admin extends CI_Controller{
       $this->M_admin->insert('tb_report',$data_report);
   
       $this->M_admin->delete('tb_barang_masuk',$where);
+      $this->session->set_flashdata('msg_berhasil','Data Barang Berhasil Dihapus');
       redirect(base_url('admin/tabel_barangmasuk'));
     }else {
       $this->load->view('login/login');
@@ -1157,6 +1158,7 @@ class Admin extends CI_Controller{
       $this->M_admin->insert('tb_report',$data_report);
   
       $this->M_admin->delete('tb_customer',$where);
+      $this->session->set_flashdata('msg_berhasil','Data Customer Berhasil Dihapus');
       redirect(base_url('admin/tabel_customer'));
     }else {
       $this->load->view('login/login');
@@ -1246,14 +1248,15 @@ class Admin extends CI_Controller{
       $this->session->set_flashdata('msg_berhasil','Data customer Berhasil Di Update');
       redirect(base_url('admin/tabel_customer'));
     }else {
-       $data['nav'] = 4;
-
-       // Load View
-       $this->load->view('component/header');
-       $data['main_header'] = $this->load->view('component/main_header', $data, TRUE);
-       $data['sidebar'] = $this->load->view('component/sidebar', NULL, TRUE);
-       $this->load->view('admin/form/form_customer',$data);
-       $this->load->view('component/footer');
+      $data['list_data'] = $this->M_admin->select('tb_customer');
+      $data['nav'] = 3;
+  
+      // Load View
+      $this->load->view('component/header');
+      $data['main_header'] = $this->load->view('component/main_header', $data, TRUE);
+      $data['sidebar'] = $this->load->view('component/sidebar', NULL, TRUE);
+      $this->load->view('admin/tabel/tabel_customer',$data);
+      $this->load->view('component/footer');
     }
     }else {
       $this->load->view('login/login');

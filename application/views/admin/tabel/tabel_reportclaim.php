@@ -17,7 +17,7 @@
       <ol class="breadcrumb">
         <li><a href="<?=base_url('admin')?>"><i class="fa fa-dashboard"></i> Home</a></li>
         <li>Report</li>
-        <li class="active"><a href="<?=base_url('admin/report_claim')?>">Report Claim</li>
+        <li class="active"><a href="<?=base_url('admin/report_claim')?>">Report Claim </a></li>
       </ol>
     </section>
 
@@ -31,22 +31,6 @@
             </div>
             
             <div class="box-body">
-
-              <?php if($this->session->flashdata('msg_berhasil')){ ?>
-                <div class="alert alert-success alert-dismissible" style="width:100%">
-                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                    <strong>Success!</strong><br> <?php echo $this->session->flashdata('msg_berhasil');?>
-               </div>
-              <?php } ?>
-
-              <?php if($this->session->flashdata('msg_berhasil_keluar')){ ?>
-                <div class="alert alert-success alert-dismissible" style="width:100%">
-                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                    <strong>Success!</strong><br> <?php echo $this->session->flashdata('msg_berhasil_keluar');?>
-               </div>
-              <?php } ?>
-
-              <a href=""></a>
               
               <div class="table-responsive">
               <table id="example1" class="table table-bordered table-striped">

@@ -37,13 +37,16 @@
                     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                     <strong>Success!</strong><br> <?php echo $this->session->flashdata('msg_berhasil');?>
                </div>
+
+               <?php $this->session->unset_userdata('msg_berhasil'); //untuk menghapus flashdata ?>
+
               <?php } ?>
 
-              <?php if($this->session->flashdata('msg_berhasil_keluar')){ ?>
-                <div class="alert alert-success alert-dismissible" style="width:100%">
-                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                    <strong>Success!</strong><br> <?php echo $this->session->flashdata('msg_berhasil_keluar');?>
-               </div>
+              <?php if (validation_errors()) { ?>
+                <div class="alert alert-warning alert-dismissible">
+                  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                  <strong>Warning!</strong><br> <?php echo validation_errors(); ?>
+                  </div>
               <?php } ?>
 
               <a href="<?=base_url('admin/form_claimbarang')?>" style="margin-bottom:10px;" type="button" class="btn btn-primary" name="tambah_data"><i class="fa fa-plus-circle" aria-hidden="true"></i> Tambah Data Claim</a>
