@@ -77,32 +77,7 @@ class User extends CI_Controller
       session_destroy();
       redirect(base_url());
   }
-
-  ####################################
-        // DATA BARANG MASUK
-  ####################################
-
-  public function tabel_barangmasuk()
-  {
-    $this->load->view('user/templates/header.php');
-    $data['list_data'] = $this->M_user->select('tb_barang_masuk');
-    $this->load->view('user/tabel/tabel_barangmasuk',$data);
-    $this->load->view('user/templates/footer.php');
-  }
-
-
-  ####################################
-        // DATA BARANG KELUAR
-  ####################################
-
-  public function tabel_barangkeluar()
-  {
-    $this->load->view('user/templates/header.php');
-    $data['list_data'] = $this->M_user->select('tb_barang_keluar');
-    $this->load->view('user/tabel/tabel_barangkeluar',$data);
-    $this->load->view('user/templates/footer.php');
-  }
-
+  
 }
 
 ?>
